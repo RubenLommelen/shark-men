@@ -1,6 +1,7 @@
 package com.switchfully.sharkmen.infrastructure;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Address {
     private final long id;
@@ -8,8 +9,8 @@ public class Address {
     private final String streetNumber;
     private final PostalCode postalCode;
 
-    public Address(long id, String streetName, String streetNumber, PostalCode postalCode) {
-        this.id = id;
+    public Address(String streetName, String streetNumber, PostalCode postalCode) {
+        this.id = new Random().nextInt();
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;

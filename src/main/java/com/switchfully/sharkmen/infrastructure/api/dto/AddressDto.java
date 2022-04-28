@@ -1,24 +1,16 @@
-package com.switchfully.sharkmen.infrastructure.dto;
-
-import com.switchfully.sharkmen.infrastructure.PostalCode;
+package com.switchfully.sharkmen.infrastructure.api.dto;
 
 import java.util.Objects;
 
 public class AddressDto {
-    private final long id;
     private final String streetName;
     private final String streetNumber;
     private final PostalCodeDto postalCode;
 
-    public AddressDto(long id, String streetName, String streetNumber, PostalCodeDto postalCode) {
-        this.id = id;
+    public AddressDto(String streetName, String streetNumber, PostalCodeDto postalCode) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getStreetName() {
@@ -37,8 +29,8 @@ public class AddressDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AddressDto address = (AddressDto) o;
-        return Objects.equals(streetName, address.streetName) && Objects.equals(streetNumber, address.streetNumber) && Objects.equals(postalCode, address.postalCode);
+        AddressDto that = (AddressDto) o;
+        return Objects.equals(streetName, that.streetName) && Objects.equals(streetNumber, that.streetNumber) && Objects.equals(postalCode, that.postalCode);
     }
 
     @Override

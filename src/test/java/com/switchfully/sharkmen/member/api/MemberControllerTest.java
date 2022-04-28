@@ -1,12 +1,11 @@
 package com.switchfully.sharkmen.member.api;
 
-import com.switchfully.sharkmen.infrastructure.Address;
-import com.switchfully.sharkmen.infrastructure.PostalCode;
-import com.switchfully.sharkmen.infrastructure.dto.AddressDto;
-import com.switchfully.sharkmen.infrastructure.dto.PostalCodeDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
-import com.switchfully.sharkmen.member.domain.LicensePlate;
+import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
+import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 import io.restassured.RestAssured;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,8 +29,8 @@ class MemberControllerTest {
     void givenMember_WhenPostMembers_ThenReturnMemberId() {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
-                , new Address(12515,"Privet drive", "4", new PostalCode(1252,"WD25", "Watfort")),
-                "0475080808", "HarryPotter@Hogwarts.uk", new LicensePlate("1515", "UK"));
+                , new AddressDto("Privet drive", "4", new PostalCodeDto("WD25", "Watfort")),
+                "0475080808", "HarryPotter@Hogwarts.uk", new LicensePlateDto("1515", "UK"));
         //  WHEN
         MemberDto actualMemberDto = RestAssured
                 .given()
