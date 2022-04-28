@@ -1,4 +1,4 @@
-package com.switchfully.sharkmen.sharkmen;
+package com.switchfully.sharkmen;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
