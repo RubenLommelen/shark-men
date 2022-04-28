@@ -1,22 +1,37 @@
 package com.switchfully.sharkmen.infrastructure;
 
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.Random;
 
+@Entity
+@Table(name = "ADDRESS")
 public class Address {
-    private final long id;
-    private final String streetName;
-    private final String streetNumber;
-    private final PostalCode postalCode;
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(name = "STREET_NAME")
+    private String streetName;
+
+    @Column(name = "STREET_NUMBER")
+    private String streetNumber;
+
+    @OneToOne
+    @JoinColumn(name = "FK_POSTAL_CODE_ID")
+    private PostalCode postalCode;
+
+    public Address() {
+    }
 
     public Address(String streetName, String streetNumber, PostalCode postalCode) {
-        this.id = new Random().nextInt();
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -20,7 +20,8 @@ CREATE SEQUENCE address_seq start with 1 increment by 1;
 
 create table CONTACT_PERSON (
     ID integer NOT NULL,
-    NAME varchar(256) NOT NULL,
+    FIRST_NAME varchar(40) NOT NULL,
+    LAST_NAME varchar(100) NOT NULL,
     MOBILE_PHONE_NUMBER varchar(20),
     TELEPHONE_NUMBER varchar(20),
     EMAIL varchar(50) NOT NULL,
