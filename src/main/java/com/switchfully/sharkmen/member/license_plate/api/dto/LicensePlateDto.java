@@ -1,12 +1,12 @@
-package com.switchfully.sharkmen.member.domain;
+package com.switchfully.sharkmen.member.license_plate.api.dto;
 
 import java.util.Objects;
 
-public class LicensePlate {
+public class LicensePlateDto {
     private final String licensePlateNumber;
     private final String country;
 
-    public LicensePlate(String licensePlateNumber, String country) {
+    public LicensePlateDto(String licensePlateNumber, String country) {
         this.licensePlateNumber = licensePlateNumber;
         this.country = country;
     }
@@ -23,7 +23,7 @@ public class LicensePlate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LicensePlate that = (LicensePlate) o;
+        LicensePlateDto that = (LicensePlateDto) o;
         return Objects.equals(licensePlateNumber, that.licensePlateNumber) && Objects.equals(country, that.country);
     }
 

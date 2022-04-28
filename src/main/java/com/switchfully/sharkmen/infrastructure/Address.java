@@ -2,6 +2,7 @@ package com.switchfully.sharkmen.infrastructure;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Random;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -24,8 +25,8 @@ public class Address {
     public Address() {
     }
 
-    public Address(long id, String streetName, String streetNumber, PostalCode postalCode) {
-        this.id = id;
+    public Address(String streetName, String streetNumber, PostalCode postalCode) {
+        this.id = new Random().nextInt();
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;

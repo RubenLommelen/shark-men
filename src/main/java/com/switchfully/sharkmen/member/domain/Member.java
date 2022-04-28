@@ -1,6 +1,7 @@
 package com.switchfully.sharkmen.member.domain;
 
 import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 
 import java.time.LocalDate;
 import java.util.Random;
@@ -32,6 +33,10 @@ public class Member {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public Address getAddress() {

@@ -1,20 +1,14 @@
-package com.switchfully.sharkmen.infrastructure.dto;
+package com.switchfully.sharkmen.infrastructure.api.dto;
 
 import java.util.Objects;
 
 public class PostalCodeDto {
-    private final long id;
     private final String zipcode;
     private final String city;
 
-    public PostalCodeDto(long id, String zipcode, String city) {
-        this.id = id;
+    public PostalCodeDto(String zipcode, String city) {
         this.zipcode = zipcode;
         this.city = city;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getZipcode() {

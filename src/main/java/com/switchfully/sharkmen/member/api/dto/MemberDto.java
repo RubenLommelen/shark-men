@@ -1,20 +1,21 @@
 package com.switchfully.sharkmen.member.api.dto;
 
-import com.switchfully.sharkmen.infrastructure.Address;
-import com.switchfully.sharkmen.member.domain.LicensePlate;
+import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
+import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 
 import java.time.LocalDate;
 
 public class MemberDto {
     private final Long memberId;
     private final String name;
-    private final Address address;
+    private final AddressDto address;
     private final String phoneNumber;
     private final String emailAddress;
-    private final LicensePlate licensePlate;
+    private final LicensePlateDto licensePlate;
     private final LocalDate registrationDate;
 
-    public MemberDto(Long memberId, String name, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate, LocalDate registrationDate) {
+    public MemberDto(Long memberId, String name, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, LocalDate registrationDate) {
         this.memberId = memberId;
         this.name = name;
         this.address = address;
@@ -28,7 +29,7 @@ public class MemberDto {
         return name;
     }
 
-    public Address getAddress() {
+    public AddressDto getAddress() {
         return address;
     }
 
@@ -40,7 +41,7 @@ public class MemberDto {
         return emailAddress;
     }
 
-    public LicensePlate getLicensePlate() {
+    public LicensePlateDto getLicensePlate() {
         return licensePlate;
     }
 
