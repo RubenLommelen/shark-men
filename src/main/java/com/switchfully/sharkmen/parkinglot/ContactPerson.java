@@ -2,14 +2,37 @@ package com.switchfully.sharkmen.parkinglot;
 
 import com.switchfully.sharkmen.infrastructure.Address;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "CONTACT_PERSON")
 public class ContactPerson {
-    private final long id;
-    private final String firstName;
-    private final String lastName;
+
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+
+    @Column(name = "LAST_NAME")
+    private String lastName;
+
+    @Column(name = "MOBILE_PONE_NUMBER")
     private String mobilePhoneNumber;
+
+    @Column(name = "TELEPHONE_NUMBER")
     private String phoneNumber;
+
+    @Column(name = "EMAIL")
     private String email;
-    private final Address address;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_ADDRESS_ID")
+    private Address address;
+
+    public ContactPerson() {
+    }
 
     public ContactPerson(long id, String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, Address address) {
         this.id = id;
