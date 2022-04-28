@@ -44,7 +44,7 @@ class MemberControllerTest {
                 .extract()
                 .as(MemberDto.class);
         //  THEN
-        Assertions.assertThat(actualMemberDto.getMemberId()).isNotZero().isNotNegative().isNotNull();
+        Assertions.assertThat(actualMemberDto.getMemberId()).isNotNull();
         Assertions.assertThat(actualMemberDto.getName()).isEqualTo(expectedCreateMemberDto.getName());
         Assertions.assertThat(actualMemberDto.getAddress()).isEqualTo(expectedCreateMemberDto.getAddress());
         Assertions.assertThat(actualMemberDto.getPhoneNumber()).isEqualTo(expectedCreateMemberDto.getPhoneNumber());
