@@ -42,5 +42,37 @@ Story PSA1:
 -Tests:
 	-edge cases (existing member, license plate check, existing parking lot, capacity)
 -Questions: -for parking allocation, does member need to receive other information than id? (for DTO)
--Complexity:
+-Complexity: 8
+
+Story PSA2: 
+-Classes: add StopTime field
+-Database: 
+-Endpoint: PUT allocations/id
+-Questions: 
+	-does allocation need to be soft deleted? is StopTime enough? Or hard deleted?
+	-Should a parkingAllocation have a status? Or enough to see that it doesn't have an enddate? a GetStatus method?
+-Complexity: 5
+
+Story ML1:
+-Classes: enum Membership level
+-Database: add membership_level to member table
+-Questions: 
+	-what to do with people that park longer than maximum time?
+	-save values in database or enough to save it in an enum?
+-Complexity: 3
+
+Story DI1:
+-Classes: Division
+-Database: division
+-endpoint: POST divisions
+-Questions:
+	-Director: should it just be a String, or more?
+-Complexity: 3
+
+Story DI2:
+-New classes: -
+-Database: division
+-endpoint: GET divisions
+-Questions:
+-Complexity: 1
 
