@@ -3,28 +3,54 @@ package com.switchfully.sharkmen.member.domain;
 import com.switchfully.sharkmen.infrastructure.Address;
 
 import java.time.LocalDate;
-import java.util.UUID;
+import java.util.Random;
 
 public class Member {
-    private String memberId;
-    private String name;
-    private Address address;
-    private String phoneNumber;
-    private String emailAddress;
-    private String licensePlate;
-    private LocalDate registrationDate;
+    private final Long memberId;
+    private final String firstName;
+    private final String lastName;
+    private final Address address;
+    private final String phoneNumber;
+    private final String emailAddress;
+    private final LicensePlate licensePlate;
+    private final LocalDate registrationDate;
 
-    public Member(String name, Address address, String phoneNumber, String emailAddress, String licensePlate) {
-        this.name = name;
+    public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.licensePlate = licensePlate;
-        this.memberId = UUID.randomUUID().toString();
+        this.memberId = new Random().nextLong();
         this.registrationDate = LocalDate.now();
     }
 
-    public String getMemberId() {
+    public Long getMemberId() {
         return memberId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public LicensePlate getLicensePlate() {
+        return licensePlate;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 }

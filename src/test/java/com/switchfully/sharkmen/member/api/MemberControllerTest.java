@@ -2,8 +2,11 @@ package com.switchfully.sharkmen.member.api;
 
 import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.infrastructure.PostalCode;
+import com.switchfully.sharkmen.infrastructure.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.dto.PostalCodeDto;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
+import com.switchfully.sharkmen.member.domain.LicensePlate;
 import io.restassured.RestAssured;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,9 +29,9 @@ class MemberControllerTest {
     @Test
     void givenMember_WhenPostMembers_ThenReturnMemberId() {
         //  GIVEN
-        CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry Potter",
-                new Address(12515,"Privet drive", "4", new PostalCode(1252,"WD25", "Watfort")),
-                "0475080808", "HarryPotter@Hogwarts.uk", "7990TD");
+        CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
+                , new Address(12515,"Privet drive", "4", new PostalCode(1252,"WD25", "Watfort")),
+                "0475080808", "HarryPotter@Hogwarts.uk", new LicensePlate("1515", "UK"));
         //  WHEN
         MemberDto actualMemberDto = RestAssured
                 .given()
@@ -44,8 +47,8 @@ class MemberControllerTest {
                 .extract()
                 .as(MemberDto.class);
         //  THEN
-        Assertions.assertThat(actualMemberDto.getMemberId()).isNotZero().isNotNegative().isNotNull();
-        Assertions.assertThat(actualMemberDto.getName()).isEqualTo(expectedCreateMemberDto.getName());
+        Assertions.assertThat(actualMemberDto.getMemberId()).isNotNull();
+        Assertions.assertThat(actualMemberDto.getName()).isEqualTo(expectedCreateMemberDto.getFirstName());
         Assertions.assertThat(actualMemberDto.getAddress()).isEqualTo(expectedCreateMemberDto.getAddress());
         Assertions.assertThat(actualMemberDto.getPhoneNumber()).isEqualTo(expectedCreateMemberDto.getPhoneNumber());
         Assertions.assertThat(actualMemberDto.getEmailAddress()).isEqualTo(expectedCreateMemberDto.getEmailAddress());
