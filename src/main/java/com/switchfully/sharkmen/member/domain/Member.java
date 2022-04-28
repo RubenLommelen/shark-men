@@ -7,15 +7,17 @@ import java.util.Random;
 
 public class Member {
     private final Long memberId;
-    private final String name;
+    private final String firstName;
+    private final String lastName;
     private final Address address;
     private final String phoneNumber;
     private final String emailAddress;
-    private final String licensePlate;
+    private final LicensePlate licensePlate;
     private final LocalDate registrationDate;
 
-    public Member(String name, Address address, String phoneNumber, String emailAddress, String licensePlate) {
-        this.name = name;
+    public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
@@ -28,8 +30,8 @@ public class Member {
         return memberId;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public Address getAddress() {
@@ -44,7 +46,7 @@ public class Member {
         return emailAddress;
     }
 
-    public String getLicensePlate() {
+    public LicensePlate getLicensePlate() {
         return licensePlate;
     }
 

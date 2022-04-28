@@ -1,28 +1,30 @@
 package com.switchfully.sharkmen.member.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.Address;
-
-import java.time.LocalDate;
-import java.util.UUID;
+import com.switchfully.sharkmen.member.domain.LicensePlate;
 
 public class CreateMemberDto {
-    private final String name;
+    private final String firstName;
+    private final String lastName;
     private final Address address;
     private final String phoneNumber;
     private final String emailAddress;
-    private final String licensePlate;
+    private final LicensePlate licensePlate;
 
-    public CreateMemberDto(String name, Address address, String phoneNumber, String emailAddress, String licensePlate) {
-        this.name = name;
+    public CreateMemberDto(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.licensePlate = licensePlate;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
+
+    public String getLastName() {return lastName; }
 
     public Address getAddress() {
         return address;
@@ -36,7 +38,9 @@ public class CreateMemberDto {
         return emailAddress;
     }
 
-    public String getLicensePlate() {
+    public LicensePlate getLicensePlate() {
         return licensePlate;
     }
+
+
 }
