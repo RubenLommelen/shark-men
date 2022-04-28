@@ -42,23 +42,16 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
         </dependency>
-<!--        database driver-->
+<!--        database driver, also for Java Time Api-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
 
 <!--        Flyway-->
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--        </dependency>-->
-
-
-<!-- Java Time Api-->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
         </dependency>
 
 
