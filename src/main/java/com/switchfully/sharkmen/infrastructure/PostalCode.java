@@ -10,7 +10,7 @@ public class PostalCode {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column(name = "ZIP_CODE")
     private String zipcode;
@@ -22,12 +22,11 @@ public class PostalCode {
     }
 
     public PostalCode(String zipcode, String city) {
-        this.id = new Random().nextInt();
         this.zipcode = zipcode;
         this.city = city;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

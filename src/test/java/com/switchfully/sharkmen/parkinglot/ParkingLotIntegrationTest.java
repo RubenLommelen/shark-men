@@ -2,6 +2,8 @@ package com.switchfully.sharkmen.parkinglot;
 
 import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.infrastructure.PostalCode;
+import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
 import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
 import org.assertj.core.api.Assertions;
@@ -30,13 +32,9 @@ public class ParkingLotIntegrationTest {
                 Category.UNDERGROUND_BUILDING,
                 20,
                 1,
-                new Address(
-                        1,
-                        "streetName",
+                new AddressDto("streetName",
                         "streetNumber",
-                        new PostalCode(
-                                1,
-                                "3000",
+                        new PostalCodeDto("3000",
                                 "Leuven"
                         )
                 )

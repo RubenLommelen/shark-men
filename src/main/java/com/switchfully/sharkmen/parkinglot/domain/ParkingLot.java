@@ -12,7 +12,7 @@ public class ParkingLot {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column(name = "NAME")
     private String name;

@@ -1,27 +1,28 @@
 package com.switchfully.sharkmen.parkinglot.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.parkinglot.Category;
 import com.switchfully.sharkmen.parkinglot.ContactPerson;
 
 public class ParkingLotResultDTO {
-    private final long id;
+    private final Long id;
     private final String name;
     private final Category category;
     private final int capacity;
-    private final ContactPerson contactPerson;
-    private final Address address;
+    private final ContactPersonDTO contactPersonDTO;
+    private final AddressDto addressDto;
 
-    public ParkingLotResultDTO(long id, String name, Category category, int capacity, ContactPerson contactPerson, Address address) {
+    public ParkingLotResultDTO(Long id, String name, Category category, int capacity, ContactPersonDTO contactPersonDTO, AddressDto addressDto) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.capacity = capacity;
-        this.contactPerson = contactPerson;
-        this.address = address;
+        this.contactPersonDTO = contactPersonDTO;
+        this.addressDto = addressDto;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -37,11 +38,11 @@ public class ParkingLotResultDTO {
         return capacity;
     }
 
-    public ContactPerson getContactPerson() {
-        return contactPerson;
+    public ContactPersonDTO getContactPersonDTO() {
+        return contactPersonDTO;
     }
 
-    public Address getAddress() {
-        return address;
+    public AddressDto getAddressDto() {
+        return addressDto;
     }
 }

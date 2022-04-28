@@ -10,7 +10,7 @@ public class Address {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column(name = "STREET_NAME")
     private String streetName;
@@ -26,13 +26,12 @@ public class Address {
     }
 
     public Address(String streetName, String streetNumber, PostalCode postalCode) {
-        this.id = new Random().nextInt();
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

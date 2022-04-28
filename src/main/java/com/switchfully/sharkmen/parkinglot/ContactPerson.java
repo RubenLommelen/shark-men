@@ -10,7 +10,7 @@ public class ContactPerson {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -34,7 +34,7 @@ public class ContactPerson {
     public ContactPerson() {
     }
 
-    public ContactPerson(long id, String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, Address address) {
+    public ContactPerson(Long id, String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, Address address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,7 +44,7 @@ public class ContactPerson {
         this.address = address;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
