@@ -5,13 +5,13 @@ import com.switchfully.sharkmen.infrastructure.Address;
 import java.time.LocalDate;
 
 public class MemberDto {
-    private Long memberId;
-    private String name;
-    private Address address;
-    private String phoneNumber;
-    private String emailAddress;
-    private String licensePlate;
-    private LocalDate registrationDate;
+    private final Long memberId;
+    private final String name;
+    private final Address address;
+    private final String phoneNumber;
+    private final String emailAddress;
+    private final String licensePlate;
+    private final LocalDate registrationDate;
 
     public MemberDto(Long memberId, String name, Address address, String phoneNumber, String emailAddress, String licensePlate, LocalDate registrationDate) {
         this.memberId = memberId;
