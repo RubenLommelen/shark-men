@@ -2,6 +2,8 @@ package com.switchfully.sharkmen.member.api;
 
 import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.infrastructure.PostalCode;
+import com.switchfully.sharkmen.infrastructure.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.dto.PostalCodeDto;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.domain.LicensePlate;

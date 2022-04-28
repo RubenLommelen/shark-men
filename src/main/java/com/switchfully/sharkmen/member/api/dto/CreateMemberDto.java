@@ -1,6 +1,7 @@
 package com.switchfully.sharkmen.member.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.infrastructure.dto.AddressDto;
 import com.switchfully.sharkmen.member.domain.LicensePlate;
 
 public class CreateMemberDto {
