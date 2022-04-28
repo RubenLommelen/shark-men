@@ -1,11 +1,24 @@
 package com.switchfully.sharkmen.infrastructure;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "POSTAL_CODE")
 public class PostalCode {
-    private final long id;
-    private final String zipcode;
-    private final String city;
+
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column(name = "ZIP_CODE")
+    private String zipcode;
+
+    @Column(name = "CITY")
+    private String city;
+
+    public PostalCode() {
+    }
 
     public PostalCode(long id, String zipcode, String city) {
         this.id = id;

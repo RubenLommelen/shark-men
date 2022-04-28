@@ -25,8 +25,12 @@ public class ContactPerson {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getMobilePhoneNumber() {
