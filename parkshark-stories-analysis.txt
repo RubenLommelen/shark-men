@@ -41,24 +41,24 @@ Story PSA1:
 -Endpoint: POST allocations
 -Tests:
 	-edge cases (existing member, license plate check, existing parking lot, capacity)
--Questions: -for parking allocation, does member need to receive other information than id? (for DTO)
+-Questions: -for parking allocation, does member need to receive other information than id? (for DTO), only ID is ok
 -Complexity: 8
 
 Story PSA2: 
 -Classes: add StopTime field
 -Database: 
--Endpoint: PUT allocations/id
+-Endpoint: POST allocations/id/stop
 -Questions: 
-	-does allocation need to be soft deleted? is StopTime enough? Or hard deleted?
-	-Should a parkingAllocation have a status? Or enough to see that it doesn't have an enddate? a GetStatus method?
+	-does allocation need to be soft deleted? is StopTime enough? Or hard deleted? Doesn't need to be deleted, useful to have a stopTime
+	-Should a parkingAllocation have a status? Or enough to see that it doesn't have an enddate? a GetStatus method? Customer just wants to see a status per allocation, how we do it internally is up to us
 -Complexity: 5
 
 Story ML1:
 -Classes: enum Membership level
 -Database: add membership_level to member table
 -Questions: 
-	-what to do with people that park longer than maximum time?
-	-save values in database or enough to save it in an enum?
+	-what to do with people that park longer than maximum time? No extra effort needed
+	-save values in database or enough to save it in an enum? Save it in enum is enough, you actually don't need to save monthly fee as long as invoices aren't implemented
 -Complexity: 3
 
 Story DI1:
@@ -66,7 +66,7 @@ Story DI1:
 -Database: division
 -endpoint: POST divisions
 -Questions:
-	-Director: should it just be a String, or more?
+	-Director: should it just be a String, or more? Just a String is fine
 -Complexity: 3
 
 Story DI2:
