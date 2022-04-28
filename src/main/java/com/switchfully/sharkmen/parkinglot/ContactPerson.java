@@ -27,7 +27,7 @@ public class ContactPerson {
     @Column(name = "EMAIL")
     private String email;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "FK_ADDRESS_ID")
     private Address address;
 
