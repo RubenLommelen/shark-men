@@ -1,5 +1,7 @@
 package com.switchfully.sharkmen.infrastructure;
 
+import java.util.Objects;
+
 public class Address {
     private final String streetName;
     private final String streetNumber;
@@ -21,5 +23,18 @@ public class Address {
 
     public PostalCode getPostalCode() {
         return postalCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(streetName, address.streetName) && Objects.equals(streetNumber, address.streetNumber) && Objects.equals(postalCode, address.postalCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(streetName, streetNumber, postalCode);
     }
 }
