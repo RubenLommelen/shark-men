@@ -1,4 +1,4 @@
-package com.switchfully.sharkmen.sharkmen;
+package com.switchfully.sharkmen;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
