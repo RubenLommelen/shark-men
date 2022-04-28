@@ -27,7 +27,7 @@ class MemberControllerTest {
     void givenMember_WhenPostMembers_ThenReturnMemberId() {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry Potter",
-                new Address("Privet drive", "4", new PostalCode("WD25", "Watfort")),
+                new Address(12515,"Privet drive", "4", new PostalCode(1252,"WD25", "Watfort")),
                 "0475080808", "HarryPotter@Hogwarts.uk", "7990TD");
         //  WHEN
         MemberDto actualMemberDto = RestAssured
@@ -44,9 +44,7 @@ class MemberControllerTest {
                 .extract()
                 .as(MemberDto.class);
         //  THEN
-        Assertions.assertThat(actualMemberDto.getMemberId())
-                .isNotBlank()
-                .isNotNull();
+        Assertions.assertThat(actualMemberDto.getMemberId()).isNotZero().isNotNegative().isNotNull();
         Assertions.assertThat(actualMemberDto.getName()).isEqualTo(expectedCreateMemberDto.getName());
         Assertions.assertThat(actualMemberDto.getAddress()).isEqualTo(expectedCreateMemberDto.getAddress());
         Assertions.assertThat(actualMemberDto.getPhoneNumber()).isEqualTo(expectedCreateMemberDto.getPhoneNumber());

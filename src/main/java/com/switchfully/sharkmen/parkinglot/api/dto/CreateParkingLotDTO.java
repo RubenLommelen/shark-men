@@ -3,14 +3,14 @@ package com.switchfully.sharkmen.parkinglot.api.dto;
 import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.parkinglot.Category;
 
-public class ParkingLotDTO {
+public class CreateParkingLotDTO {
     private final String name;
     private final Category category;
     private final int capacity;
     private final int contactPersonID;
     private final Address address;
 
-    public ParkingLotDTO(String name, Category category, int capacity, int contactPersonID, Address address) {
+    public CreateParkingLotDTO(String name, Category category, int capacity, int contactPersonID, Address address) {
         this.name = name;
         this.category = category;
         this.capacity = capacity;

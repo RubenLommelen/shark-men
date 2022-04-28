@@ -20,4 +20,28 @@ public class ContactPerson {
         this.email = email;
         this.address = address;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getMobilePhoneNumber() {
+        return mobilePhoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
 }
