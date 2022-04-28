@@ -8,7 +8,7 @@
         <version>2.6.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.switchfully.sharkmen</groupId>
+    <groupId>com.switchfully</groupId>
     <artifactId>shark-men</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>shark-men</name>
