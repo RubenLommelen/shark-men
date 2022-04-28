@@ -2,7 +2,7 @@ package com.switchfully.sharkmen.parkinglot;
 
 import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.infrastructure.PostalCode;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
 import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class ParkingLotIntegrationTest {
 
     @Test
     void createParkingLot_whenCreateParkingLot_thenCreatedSuccessfully() {
-        ParkingLotDTO parkingLotDTO = new ParkingLotDTO(
+        CreateParkingLotDTO parkingLotDTO = new CreateParkingLotDTO(
                 "Shark",
                 Category.UNDERGROUND_BUILDING,
                 20,
