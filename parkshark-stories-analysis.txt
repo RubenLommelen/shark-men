@@ -1,0 +1,46 @@
+Story PL1:
+-Classes needed: parkingLot, contactPerson, Address, postalCode, Category (enum)
+
+-Database: parking_lot, person, address
+-Endpoint: POST parking-lots
+-Tests: 
+	-endpoint test
+	-database test
+	-edge cases (email, phone numbers,...)
+-Questions: 
+	-what are the rules for valid e-mail addresses? Only regex
+	-Which fields are required? All
+-Complexity: 13
+
+Story ME1:
+-Classes needed: Member, LicensePlate
+-Database: member
+-Endpoint: POST members
+-Tests: 
+	-endpoint test
+	-database test
+	-edge cases (email, phone numbers,...)
+-Questions: 
+	-Does address for member have same structure as a contact person of a parking lot? Yes
+	-Can one member have multiple license plates? No
+	-Can we assume one member per car? Or multiple? One car per member (except Gold)
+	-Which fields are required? All
+-Complexity: 5
+-Comments: 
+	-use Java Time API: https://www.baeldung.com/jpa-java-time
+	-one-to-one relationship between name and license plate
+
+Story PSA1:
+-Classes needed: ParkingAllocation
+	-id
+	-memberId
+	-licensePlate
+	-parkingLotId
+	-startTime
+-Database: parking_allocation
+-Endpoint: POST allocations
+-Tests:
+	-edge cases (existing member, license plate check, existing parking lot, capacity)
+-Questions: -for parking allocation, does member need to receive other information than id? (for DTO)
+-Complexity:
+
