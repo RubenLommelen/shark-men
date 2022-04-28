@@ -8,4 +8,12 @@ public class PostalCode {
         this.zipcode = zipcode;
         this.city = city;
     }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
 }

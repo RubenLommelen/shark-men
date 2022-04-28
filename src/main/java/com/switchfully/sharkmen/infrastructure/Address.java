@@ -10,4 +10,16 @@ public class Address {
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
     }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public PostalCode getPostalCode() {
+        return postalCode;
+    }
 }
