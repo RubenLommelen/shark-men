@@ -3,10 +3,9 @@ package com.switchfully.sharkmen.member.api.dto;
 import com.switchfully.sharkmen.infrastructure.Address;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class MemberDto {
-    private String memberId;
+    private Long memberId;
     private String name;
     private Address address;
     private String phoneNumber;
@@ -14,7 +13,7 @@ public class MemberDto {
     private String licensePlate;
     private LocalDate registrationDate;
 
-    public MemberDto(String memberId, String name, Address address, String phoneNumber, String emailAddress, String licensePlate, LocalDate registrationDate) {
+    public MemberDto(Long memberId, String name, Address address, String phoneNumber, String emailAddress, String licensePlate, LocalDate registrationDate) {
         this.memberId = memberId;
         this.name = name;
         this.address = address;
@@ -48,7 +47,7 @@ public class MemberDto {
         return registrationDate;
     }
 
-    public String getMemberId() {
+    public Long getMemberId() {
         return memberId;
     }
 }
