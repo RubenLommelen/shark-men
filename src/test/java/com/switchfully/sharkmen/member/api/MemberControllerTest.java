@@ -15,6 +15,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
 
 import static io.restassured.http.ContentType.JSON;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -53,5 +54,26 @@ class MemberControllerTest {
         Assertions.assertThat(actualMemberDto.getEmailAddress()).isEqualTo(expectedCreateMemberDto.getEmailAddress());
         Assertions.assertThat(actualMemberDto.getLicensePlate()).isEqualTo(expectedCreateMemberDto.getLicensePlate());
 
+    }
+
+    @Test
+    void GivenWrongEmailAddressFormat_WhenCreatingNewMember_ThenThrowIllegalArgException(){
+        //  GIVEN
+        CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
+                , new AddressDto("Privet drive", "4", new PostalCodeDto("WD25", "Watfort")),
+                "0475080808", "HarryPotter@Hogwartsuk", new LicensePlateDto("1515", "UK"));
+//  WHEN
+         RestAssured
+                .given()
+                .body(expectedCreateMemberDto)
+                .accept(JSON)
+                .contentType(JSON)
+                .when()
+                .port(port)
+                .post("members")
+                .then()
+                .assertThat()
+                .statusCode(BAD_REQUEST.value());
+        //  THEN
     }
 }

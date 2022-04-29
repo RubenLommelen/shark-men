@@ -1,5 +1,6 @@
 package com.switchfully.sharkmen.member.service;
 
+import com.switchfully.sharkmen.infrastructure.exceptions.IllegalFormatForEmailException;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.domain.Member;
@@ -24,7 +25,7 @@ public class MemberService {
         Member memberToRegister = memberMapper.ToMember(createMemberDto);
         if (!isEmailFormValid(memberToRegister.getEmailAddress())) {
             memberServiceLogger.info("Wrong e-mail address format" + memberToRegister.getEmailAddress());
-            throw new IllegalArgumentException("Please provide a correct E-mail address");
+            throw new IllegalFormatForEmailException();
         }
         memberServiceLogger.info("Registering a member" + memberToRegister.getFirstName());
         return memberMapper.ToDto(memberToRegister);
