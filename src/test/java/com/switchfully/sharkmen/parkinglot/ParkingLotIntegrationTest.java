@@ -2,10 +2,9 @@ package com.switchfully.sharkmen.parkinglot;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateContactPersonDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateContactPersonDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -27,11 +26,11 @@ public class ParkingLotIntegrationTest {
 
     @Test
     void createParkingLot_whenCreateParkingLot_thenCreatedSuccessfully() {
-        CreateParkingLotDTO parkingLotDTO = new CreateParkingLotDTO(
+        CreateParkingLotDto parkingLotDto = new CreateParkingLotDto(
                 "Shark",
                 Category.UNDERGROUND_BUILDING,
                 20,
-                new CreateContactPersonDTO(
+                new CreateContactPersonDto(
                         "FirstName",
                         "LastName",
                         "11",
@@ -54,18 +53,18 @@ public class ParkingLotIntegrationTest {
                 )
         );
 
-        CreateParkingLotResultDTO result = given()
+        CreateParkingLotResultDto result = given()
                 .baseUri("http://localhost")
                 .port(port)
                 .when()
-                .body(parkingLotDTO)
+                .body(parkingLotDto)
                 .contentType(JSON)
                 .post("/parking-lots")
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.CREATED.value())
                 .extract()
-                .as(CreateParkingLotResultDTO.class);
+                .as(CreateParkingLotResultDto.class);
 
         Assertions.assertThat(result.getId()).isNotNull();
     }

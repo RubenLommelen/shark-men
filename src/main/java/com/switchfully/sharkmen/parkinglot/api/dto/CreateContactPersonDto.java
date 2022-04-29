@@ -2,7 +2,7 @@ package com.switchfully.sharkmen.parkinglot.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 
-public class CreateContactPersonDTO {
+public class CreateContactPersonDto {
 
     private final String firstName;
     private final String lastName;
@@ -11,7 +11,7 @@ public class CreateContactPersonDTO {
     private final String email;
     private final CreateAddressDto createAddressDto;
 
-    public CreateContactPersonDTO(String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, CreateAddressDto createAddressDto) {
+    public CreateContactPersonDto(String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, CreateAddressDto createAddressDto) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobilePhoneNumber = mobilePhoneNumber;
@@ -46,7 +46,7 @@ public class CreateContactPersonDTO {
 
     @Override
     public String toString() {
-        return "CreateContactPersonDTO{" +
+        return "CreateContactPersonDto{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", mobilePhoneNumber='" + mobilePhoneNumber + '\'' +

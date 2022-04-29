@@ -7,8 +7,8 @@ import com.switchfully.sharkmen.infrastructure.domain.PostalCodeRepository;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.infrastructure.service.PostalCodeMapper;
 import com.switchfully.sharkmen.parkinglot.ContactPerson;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.domain.ContactPersonRepository;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
@@ -40,13 +40,13 @@ public class ParkingLotService {
         this.contactPersonRepository = contactPersonRepository;
     }
 
-    public CreateParkingLotResultDTO createParkingLot(CreateParkingLotDTO parkingLotDTO) {
-        PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateAddressDto().getCreatePostalCodeDto());
-        PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCodeDto());
-        Address parkingLotAddress = addressMapper.toAddress(parkingLotDTO.getCreateAddressDto(), parkingLotPostalCode);
-        Address contactPersonAddress = addressMapper.toAddress(parkingLotDTO.getCreateContactPersonDto().getCreateAddressDto(), contactPersonPostalCode);
-        ContactPerson contactPerson = contactPersonMapper.toContactPerson(parkingLotDTO.getCreateContactPersonDto(), contactPersonAddress);
-        ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDTO, contactPerson, parkingLotAddress);
+    public CreateParkingLotResultDto createParkingLot(CreateParkingLotDto parkingLotDto) {
+        PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDto.getCreateAddressDto().getCreatePostalCodeDto());
+        PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDto.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCodeDto());
+        Address parkingLotAddress = addressMapper.toAddress(parkingLotDto.getCreateAddressDto(), parkingLotPostalCode);
+        Address contactPersonAddress = addressMapper.toAddress(parkingLotDto.getCreateContactPersonDto().getCreateAddressDto(), contactPersonPostalCode);
+        ContactPerson contactPerson = contactPersonMapper.toContactPerson(parkingLotDto.getCreateContactPersonDto(), contactPersonAddress);
+        ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto, contactPerson, parkingLotAddress);
 
         postalCodeRepository.save(parkingLotPostalCode);
         postalCodeRepository.save(contactPersonPostalCode);

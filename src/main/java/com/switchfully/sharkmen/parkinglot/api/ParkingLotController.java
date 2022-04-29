@@ -1,11 +1,7 @@
 package com.switchfully.sharkmen.parkinglot.api;
 
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
-import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.ContactPersonDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.service.ParkingLotService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +18,7 @@ public class ParkingLotController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateParkingLotResultDTO createParkingLot(@RequestBody CreateParkingLotDTO parkingLotDTO) {
-        return parkingLotService.createParkingLot(parkingLotDTO);
+    public CreateParkingLotResultDto createParkingLot(@RequestBody CreateParkingLotDto parkingLotDto) {
+        return parkingLotService.createParkingLot(parkingLotDto);
     }
 }

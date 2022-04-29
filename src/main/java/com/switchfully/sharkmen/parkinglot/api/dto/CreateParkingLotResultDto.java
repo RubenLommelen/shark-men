@@ -1,14 +1,14 @@
 package com.switchfully.sharkmen.parkinglot.api.dto;
 
-public class CreateParkingLotResultDTO {
+public class CreateParkingLotResultDto {
 
     private Long id;
 
-    public CreateParkingLotResultDTO(Long id) {
+    public CreateParkingLotResultDto(Long id) {
         this.id = id;
     }
 
-    public CreateParkingLotResultDTO() {
+    public CreateParkingLotResultDto() {
     }
 
     public Long getId() {

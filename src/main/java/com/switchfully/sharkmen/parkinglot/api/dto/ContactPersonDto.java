@@ -2,7 +2,7 @@ package com.switchfully.sharkmen.parkinglot.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 
-public class ContactPersonDTO {
+public class ContactPersonDto {
 
     private final Long id;
     private final String firstName;
@@ -12,7 +12,7 @@ public class ContactPersonDTO {
     private final String email;
     private final AddressDto addressDto;
 
-    public ContactPersonDTO(Long id, String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, AddressDto addressDto) {
+    public ContactPersonDto(Long id, String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, AddressDto addressDto) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -4,9 +4,9 @@ import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.infrastructure.service.PostalCodeMapper;
 import com.switchfully.sharkmen.parkinglot.ContactPerson;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +23,7 @@ public class ParkingLotMapper {
         this.postalCodeMapper = postalCodeMapper;
     }
 
-    public ParkingLot toParkingLot(CreateParkingLotDTO parkingLotDTO, ContactPerson contactPerson, Address parkingLotAddress) {
+    public ParkingLot toParkingLot(CreateParkingLotDto parkingLotDTO, ContactPerson contactPerson, Address parkingLotAddress) {
         return new ParkingLot(
                 parkingLotDTO.getName(),
                 parkingLotDTO.getCategory(),
@@ -33,14 +33,14 @@ public class ParkingLotMapper {
         );
     }
 
-    public CreateParkingLotResultDTO toCreateParkingLotResultDto(ParkingLot parkingLot) {
-        return new CreateParkingLotResultDTO(
+    public CreateParkingLotResultDto toCreateParkingLotResultDto(ParkingLot parkingLot) {
+        return new CreateParkingLotResultDto(
                 parkingLot.getId()
         );
     }
 
-    public ParkingLotResultDTO toDto(ParkingLot parkingLot) {
-        return new ParkingLotResultDTO(
+    public ParkingLotResultDto toDto(ParkingLot parkingLot) {
+        return new ParkingLotResultDto(
                 parkingLot.getId(),
                 parkingLot.getName(),
                 parkingLot.getCategory(),
