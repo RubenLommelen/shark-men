@@ -43,4 +43,16 @@ public class CreateContactPersonDTO {
     public CreateAddressDto getCreateAddressDto() {
         return createAddressDto;
     }
+
+    @Override
+    public String toString() {
+        return "CreateContactPersonDTO{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", mobilePhoneNumber='" + mobilePhoneNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", createAddressDto=" + createAddressDto +
+                '}';
+    }
 }

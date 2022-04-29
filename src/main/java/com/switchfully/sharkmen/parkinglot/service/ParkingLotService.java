@@ -8,7 +8,7 @@ import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.infrastructure.service.PostalCodeMapper;
 import com.switchfully.sharkmen.parkinglot.ContactPerson;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDTO;
 import com.switchfully.sharkmen.parkinglot.domain.ContactPersonRepository;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
@@ -40,9 +40,10 @@ public class ParkingLotService {
         this.contactPersonRepository = contactPersonRepository;
     }
 
-    public ParkingLotResultDTO createParkingLot(CreateParkingLotDTO parkingLotDTO) {
-        PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateAddressDto().getCreatePostalCode());
-        PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCode());
+    public CreateParkingLotResultDTO createParkingLot(CreateParkingLotDTO parkingLotDTO) {
+        System.out.println(parkingLotDTO);
+        PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateAddressDto().getCreatePostalCodeDto());
+        PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCodeDto());
         Address parkingLotAddress = addressMapper.toAddress(parkingLotDTO.getCreateAddressDto(), parkingLotPostalCode);
         Address contactPersonAddress = addressMapper.toAddress(parkingLotDTO.getCreateContactPersonDto().getCreateAddressDto(), contactPersonPostalCode);
         ContactPerson contactPerson = contactPersonMapper.toContactPerson(parkingLotDTO.getCreateContactPersonDto(), contactPersonAddress);
@@ -55,6 +56,6 @@ public class ParkingLotService {
         contactPersonRepository.save(contactPerson);
         parkingLotRepository.save(parkingLot);
 
-        return parkingLotMapper.toDto(parkingLot);
+        return parkingLotMapper.toCreateParkingLotResultDto(parkingLot);
     }
 }

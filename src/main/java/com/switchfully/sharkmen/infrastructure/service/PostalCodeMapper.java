@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostalCodeMapper {
 
-    private Logger postalCodeMapperLogger = LoggerFactory.getLogger(PostalCodeMapper.class) ;
+    private final Logger postalCodeMapperLogger = LoggerFactory.getLogger(PostalCodeMapper.class) ;
 
     public PostalCode toPostalCode (PostalCodeDto postalCodeDto){
         postalCodeMapperLogger.info("PostalCodeDto conversion to PostalCode");
@@ -19,6 +19,7 @@ public class PostalCodeMapper {
 
     public PostalCode toPostalCode (CreatePostalCodeDto postalCodeDto){
         postalCodeMapperLogger.info("PostalCodeDto conversion to PostalCode");
+        System.out.println(postalCodeDto);
         return new PostalCode(postalCodeDto.getZipcode(), postalCodeDto.getCity());
     }
 

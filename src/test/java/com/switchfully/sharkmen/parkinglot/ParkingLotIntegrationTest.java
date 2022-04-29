@@ -4,6 +4,7 @@ import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateContactPersonDTO;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
+import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDTO;
 import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -53,7 +54,7 @@ public class ParkingLotIntegrationTest {
                 )
         );
 
-        ParkingLotResultDTO result = given()
+        CreateParkingLotResultDTO result = given()
                 .baseUri("http://localhost")
                 .port(port)
                 .when()
@@ -64,8 +65,8 @@ public class ParkingLotIntegrationTest {
                 .assertThat()
                 .statusCode(HttpStatus.CREATED.value())
                 .extract()
-                .as(ParkingLotResultDTO.class);
+                .as(CreateParkingLotResultDTO.class);
 
-        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result.getId()).isNotNull();
     }
 }

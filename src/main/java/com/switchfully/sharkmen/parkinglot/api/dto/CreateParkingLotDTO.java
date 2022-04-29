@@ -37,4 +37,15 @@ public class CreateParkingLotDTO {
     public CreateAddressDto getCreateAddressDto() {
         return createAddressDto;
     }
+
+    @Override
+    public String toString() {
+        return "CreateParkingLotDTO{" +
+                "name='" + name + '\'' +
+                ", category=" + category +
+                ", capacity=" + capacity +
+                ", createContactPersonDto=" + createContactPersonDto +
+                ", createAddressDto=" + createAddressDto +
+                '}';
+    }
 }
