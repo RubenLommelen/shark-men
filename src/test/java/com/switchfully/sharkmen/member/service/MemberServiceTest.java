@@ -1,7 +1,7 @@
 package com.switchfully.sharkmen.member.service;
 
-import com.switchfully.sharkmen.infrastructure.Address;
-import com.switchfully.sharkmen.infrastructure.PostalCode;
+import com.switchfully.sharkmen.infrastructure.domain.Address;
+import com.switchfully.sharkmen.infrastructure.domain.PostalCode;
 import com.switchfully.sharkmen.member.domain.Member;
 import com.switchfully.sharkmen.member.domain.MemberRepository;
 import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;

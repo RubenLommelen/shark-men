@@ -16,14 +16,14 @@ public class ContactPersonMapper {
         this.addressMapper = addressMapper;
     }
 
-    public ContactPerson toContactPerson(CreateContactPersonDto createContactPersonDto, Address contactPersonAddress) {
+    public ContactPerson toContactPerson(CreateContactPersonDto createContactPersonDto) {
         return new ContactPerson(
                 createContactPersonDto.getFirstName(),
                 createContactPersonDto.getLastName(),
                 createContactPersonDto.getMobilePhoneNumber(),
                 createContactPersonDto.getPhoneNumber(),
                 createContactPersonDto.getEmail(),
-                contactPersonAddress
+                addressMapper.toAddress(createContactPersonDto.getCreateAddressDto())
         );
     }
 

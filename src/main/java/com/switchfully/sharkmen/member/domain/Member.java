@@ -16,7 +16,8 @@ public class Member {
     private final Logger memberLogger = LoggerFactory.getLogger(Member.class);
 
     @Id
-    @GeneratedValue
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
     @Column(name = "FIRSTNAME")
     private String firstName;
@@ -113,11 +114,22 @@ public class Member {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Member member = (Member) o;
-        return Objects.equals(memberLogger, member.memberLogger) && Objects.equals(memberId, member.memberId) && Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate) && Objects.equals(registrationDate, member.registrationDate);
+        return Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(memberLogger, memberId, firstName, lastName, address, phoneNumber, emailAddress, licensePlate, registrationDate);
+        return Objects.hash(firstName, lastName, address, phoneNumber, emailAddress, licensePlate);
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", licensePlate=" + licensePlate +
+                '}';
     }
 }
