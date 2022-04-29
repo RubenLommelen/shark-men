@@ -1,6 +1,6 @@
 package com.switchfully.sharkmen.parkinglot.api.dto;
 
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 
 public class CreateContactPersonDTO {
 
@@ -9,15 +9,15 @@ public class CreateContactPersonDTO {
     private final String mobilePhoneNumber;
     private final String phoneNumber;
     private final String email;
-    private final AddressDto addressDto;
+    private final CreateAddressDto createAddressDto;
 
-    public CreateContactPersonDTO(String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, AddressDto addressDto) {
+    public CreateContactPersonDTO(String firstName, String lastName, String mobilePhoneNumber, String phoneNumber, String email, CreateAddressDto createAddressDto) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobilePhoneNumber = mobilePhoneNumber;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.addressDto = addressDto;
+        this.createAddressDto = createAddressDto;
     }
 
     public String getFirstName() {
@@ -40,7 +40,7 @@ public class CreateContactPersonDTO {
         return email;
     }
 
-    public AddressDto getAddressDto() {
-        return addressDto;
+    public CreateAddressDto getCreateAddressDto() {
+        return createAddressDto;
     }
 }

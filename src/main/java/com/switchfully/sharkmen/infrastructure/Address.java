@@ -9,7 +9,7 @@ import java.util.Random;
 public class Address {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "STREET_NAME")
@@ -58,5 +58,15 @@ public class Address {
     @Override
     public int hashCode() {
         return Objects.hash(streetName, streetNumber, postalCode);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", streetName='" + streetName + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
+                ", postalCode=" + postalCode +
+                '}';
     }
 }

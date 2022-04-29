@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class ParkingLot {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "NAME")
@@ -33,5 +33,49 @@ public class ParkingLot {
     private Address address;
 
     public ParkingLot() {
+    }
+
+    public ParkingLot(String name, Category category, int capacity, ContactPerson contactPerson, Address address) {
+        this.name = name;
+        this.category = category;
+        this.capacity = capacity;
+        this.contactPerson = contactPerson;
+        this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public ContactPerson getContactPerson() {
+        return contactPerson;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    @Override
+    public String toString() {
+        return "ParkingLot{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                ", capacity=" + capacity +
+                ", contactPerson=" + contactPerson +
+                ", address=" + address +
+                '}';
     }
 }

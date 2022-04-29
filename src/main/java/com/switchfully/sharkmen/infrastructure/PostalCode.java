@@ -9,7 +9,7 @@ import java.util.Random;
 public class PostalCode {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "ZIP_CODE")
@@ -49,5 +49,14 @@ public class PostalCode {
     @Override
     public int hashCode() {
         return Objects.hash(zipcode, city);
+    }
+
+    @Override
+    public String toString() {
+        return "PostalCode{" +
+                "id=" + id +
+                ", zipcode='" + zipcode + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

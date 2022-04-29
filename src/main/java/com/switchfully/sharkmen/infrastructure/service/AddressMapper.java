@@ -1,7 +1,9 @@
 package com.switchfully.sharkmen.infrastructure.service;
 
 import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.infrastructure.PostalCode;
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.member.service.MemberMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,15 @@ public class AddressMapper {
                 addressDto.getStreetNumber(),
                 postalCodeMapper.toPostalCode(addressDto.getPostalCodeDto())
                 );
+    }
+
+    public Address toAddress (CreateAddressDto createAddressDto, PostalCode postalCode){
+        addressMapperLogger.info("AddressDto conversion to Address");
+        return new Address(
+                createAddressDto.getStreetName(),
+                createAddressDto.getStreetNumber(),
+                postalCode
+        );
     }
 
     public AddressDto toDto (Address address){

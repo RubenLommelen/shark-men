@@ -19,7 +19,7 @@ public class CreateAddressDto {
         return streetNumber;
     }
 
-    public CreatePostalCodeDto getPostalCode() {
+    public CreatePostalCodeDto getCreatePostalCode() {
         return createPostalCode;
     }
 }
