@@ -5,7 +5,6 @@ import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
-import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 import io.restassured.RestAssured;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -57,13 +56,13 @@ class MemberControllerTest {
     }
 
     @Test
-    void GivenWrongEmailAddressFormat_WhenCreatingNewMember_ThenThrowIllegalArgException(){
+    void GivenWrongEmailAddressFormat_WhenCreatingNewMember_ThenThrowIllegalArgException() {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
                 , new AddressDto("Privet drive", "4", new PostalCodeDto("WD25", "Watfort")),
                 "0475080808", "HarryPotter@Hogwartsuk", new LicensePlateDto("1515", "UK"));
 //  WHEN
-         RestAssured
+        RestAssured
                 .given()
                 .body(expectedCreateMemberDto)
                 .accept(JSON)
