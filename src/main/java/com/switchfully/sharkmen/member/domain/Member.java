@@ -24,14 +24,14 @@ public class Member {
     private String firstName;
     @Column(name = "LASTNAME")
     private String lastName;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_ADDRESS_ID")
     private Address address;
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
     @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_LICENSE_PLATE_ID")
     private LicensePlate licensePlate;
     @Column(name = "REGISTRATION_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")

@@ -18,7 +18,7 @@ public class Address {
     @Column(name = "STREET_NUMBER")
     private String streetNumber;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_POSTAL_CODE_ID")
     private PostalCode postalCode;
 
