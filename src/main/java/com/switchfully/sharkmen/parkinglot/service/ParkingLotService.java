@@ -12,13 +12,19 @@ import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.domain.ContactPersonRepository;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
+import javax.xml.validation.SchemaFactoryLoader;
 
 @Service
 @Transactional
 public class ParkingLotService {
+    private final Logger parkingLotServiceLogger = LoggerFactory.getLogger(ParkingLotService.class);
 
     private final AddressMapper addressMapper;
     private final PostalCodeMapper postalCodeMapper;
@@ -42,6 +48,7 @@ public class ParkingLotService {
     }
 
     public CreateParkingLotResultDto createParkingLot(CreateParkingLotDto parkingLotDto) {
+        validatePhoneNumbers(parkingLotDto);
         ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto);
 
         postalCodeRepository.save(parkingLot.getAddress().getPostalCode());
@@ -52,5 +59,15 @@ public class ParkingLotService {
         parkingLotRepository.save(parkingLot);
 
         return parkingLotMapper.toCreateParkingLotResultDto(parkingLot);
+    }
+
+    private void validatePhoneNumbers(CreateParkingLotDto parkingLotDto) {
+        if ((parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber() == null
+                || parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber().isBlank())
+                && (parkingLotDto.getCreateContactPersonDto().getPhoneNumber() == null
+                || parkingLotDto.getCreateContactPersonDto().getPhoneNumber().isBlank())) {
+            parkingLotServiceLogger.error("Phone numbers are null or blank, at least 1 need to be filled in");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Both phone numbers are blank or null");
+        }
     }
 }

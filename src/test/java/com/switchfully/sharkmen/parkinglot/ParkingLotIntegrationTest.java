@@ -305,5 +305,46 @@ public class ParkingLotIntegrationTest {
                 .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
+    @Test
+    void createParkingLot_whenNoPhoneNumbers_thenBadRequest() {
+        CreateParkingLotDto parkingLotDto = new CreateParkingLotDto(
+                "Bob",
+                Category.UNDERGROUND_BUILDING,
+                20,
+                new CreateContactPersonDto(
+                        "FirstName",
+                        "lastName",
+                        "",
+                        "",
+                        "a@bob.com",
+                        new CreateAddressDto("streetName",
+                                "1",
+                                new CreatePostalCodeDto(
+                                        "3000",
+                                        "Leuven"
+                                )
+                        )
+                ),
+                new CreateAddressDto("streetName",
+                        "1",
+                        new CreatePostalCodeDto(
+                                "3000",
+                                "Leuven"
+                        )
+                )
+        );
+
+        given()
+                .baseUri("http://localhost")
+                .port(port)
+                .when()
+                .body(parkingLotDto)
+                .contentType(JSON)
+                .post("/parking-lots")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+    }
+
 
 }

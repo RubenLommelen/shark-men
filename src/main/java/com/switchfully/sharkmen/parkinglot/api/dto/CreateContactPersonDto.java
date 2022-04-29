@@ -13,9 +13,7 @@ public class CreateContactPersonDto {
     private final String firstName;
     @NotBlank(message = "lastName is blank or null")
     private final String lastName;
-    @NotBlank(message = "mobilePhoneNumber is blank or null")
     private final String mobilePhoneNumber;
-    @NotBlank(message = "phoneNumber is blank or null")
     private final String phoneNumber;
     @Email(regexp = "^(\\S+)@(\\S+)\\.([a-zA-Z]+)$", message = "email is not in the right format")
     @NotBlank(message = "email is blank or null")
