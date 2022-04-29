@@ -3,12 +3,12 @@ package com.switchfully.sharkmen.infrastructure.api.dto;
 public class CreateAddressDto {
     private final String streetName;
     private final String streetNumber;
-    private final PostalCodeDto postalCode;
+    private final CreatePostalCodeDto createPostalCodeDto;
 
-    public CreateAddressDto(String streetName, String streetNumber, PostalCodeDto postalCode) {
+    public CreateAddressDto(String streetName, String streetNumber, CreatePostalCodeDto createPostalCodeDto) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
-        this.postalCode = postalCode;
+        this.createPostalCodeDto = createPostalCodeDto;
     }
 
     public String getStreetName() {
@@ -19,7 +19,7 @@ public class CreateAddressDto {
         return streetNumber;
     }
 
-    public PostalCodeDto getPostalCode() {
-        return postalCode;
+    public CreatePostalCodeDto getCreatePostalCode() {
+        return createPostalCodeDto;
     }
 }

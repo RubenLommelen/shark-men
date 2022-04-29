@@ -1,22 +1,21 @@
 package com.switchfully.sharkmen.parkinglot.api.dto;
 
-import com.switchfully.sharkmen.infrastructure.Address;
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.parkinglot.Category;
 
 public class CreateParkingLotDTO {
     private final String name;
     private final Category category;
     private final int capacity;
-    private final int contactPersonID;
-    private final AddressDto addressDto;
+    private final CreateContactPersonDTO createContactPersonDto;
+    private final CreateAddressDto createAddressDto;
 
-    public CreateParkingLotDTO(String name, Category category, int capacity, int contactPersonID, AddressDto addressDto) {
+    public CreateParkingLotDTO(String name, Category category, int capacity, CreateContactPersonDTO createContactPersonDto, CreateAddressDto createAddressDto) {
         this.name = name;
         this.category = category;
         this.capacity = capacity;
-        this.contactPersonID = contactPersonID;
-        this.addressDto = addressDto;
+        this.createContactPersonDto = createContactPersonDto;
+        this.createAddressDto = createAddressDto;
     }
 
     public String getName() {
@@ -31,11 +30,11 @@ public class CreateParkingLotDTO {
         return capacity;
     }
 
-    public int getContactPersonID() {
-        return contactPersonID;
+    public CreateContactPersonDTO getCreateContactPersonDto() {
+        return createContactPersonDto;
     }
 
-    public AddressDto getAddressDto() {
-        return addressDto;
+    public CreateAddressDto getCreateAddressDto() {
+        return createAddressDto;
     }
 }

@@ -9,7 +9,8 @@ import java.util.Random;
 public class Address {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
+    @SequenceGenerator(name = "address_seq", sequenceName = "address_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "STREET_NAME")
@@ -58,5 +59,15 @@ public class Address {
     @Override
     public int hashCode() {
         return Objects.hash(streetName, streetNumber, postalCode);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", streetName='" + streetName + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
+                ", postalCode=" + postalCode +
+                '}';
     }
 }

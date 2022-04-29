@@ -5,6 +5,7 @@ import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.ContactPersonDTO;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDTO;
 import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotResultDTO;
+import com.switchfully.sharkmen.parkinglot.service.ParkingLotService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("parking-lots")
 public class ParkingLotController {
 
+    private ParkingLotService parkingLotService;
+
+    public ParkingLotController(ParkingLotService parkingLotService) {
+        this.parkingLotService = parkingLotService;
+    }
+
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public ParkingLotResultDTO createParkingLot(@RequestBody CreateParkingLotDTO parkingLotDTO) {
-        return new ParkingLotResultDTO(1L, parkingLotDTO.getName(), parkingLotDTO.getCategory(), parkingLotDTO.getCapacity(), new ContactPersonDTO(1L,"", "", "", "", "", new AddressDto( "", "", new PostalCodeDto(  "3000", "Leuven"))), parkingLotDTO.getAddressDto());
+        return parkingLotService.createParkingLot(parkingLotDTO);
     }
 }

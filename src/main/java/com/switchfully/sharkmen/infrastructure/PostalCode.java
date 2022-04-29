@@ -9,7 +9,8 @@ import java.util.Random;
 public class PostalCode {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "postal_code_seq")
+    @SequenceGenerator(name = "postal_code_seq", sequenceName = "postal_code_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "ZIP_CODE")
@@ -49,5 +50,14 @@ public class PostalCode {
     @Override
     public int hashCode() {
         return Objects.hash(zipcode, city);
+    }
+
+    @Override
+    public String toString() {
+        return "PostalCode{" +
+                "id=" + id +
+                ", zipcode='" + zipcode + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
