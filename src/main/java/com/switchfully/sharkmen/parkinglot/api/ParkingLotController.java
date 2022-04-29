@@ -6,6 +6,8 @@ import com.switchfully.sharkmen.parkinglot.service.ParkingLotService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("parking-lots")
 public class ParkingLotController {
@@ -18,7 +20,7 @@ public class ParkingLotController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateParkingLotResultDto createParkingLot(@RequestBody CreateParkingLotDto parkingLotDto) {
+    public CreateParkingLotResultDto createParkingLot(@Valid @RequestBody CreateParkingLotDto parkingLotDto) {
         return parkingLotService.createParkingLot(parkingLotDto);
     }
 }

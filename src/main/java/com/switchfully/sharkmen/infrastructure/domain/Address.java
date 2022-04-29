@@ -1,4 +1,4 @@
-package com.switchfully.sharkmen.infrastructure;
+package com.switchfully.sharkmen.infrastructure.domain;
 
 import javax.persistence.*;
 import java.util.Objects;

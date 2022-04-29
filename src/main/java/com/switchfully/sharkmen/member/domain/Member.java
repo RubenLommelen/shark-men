@@ -1,6 +1,6 @@
 package com.switchfully.sharkmen.member.domain;
 
-import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.infrastructure.domain.Address;
 import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 package com.switchfully.sharkmen.parkinglot.service;
 
-import com.switchfully.sharkmen.infrastructure.Address;
-import com.switchfully.sharkmen.infrastructure.PostalCode;
+import com.switchfully.sharkmen.infrastructure.domain.Address;
+import com.switchfully.sharkmen.infrastructure.domain.PostalCode;
 import com.switchfully.sharkmen.infrastructure.domain.AddressRepository;
 import com.switchfully.sharkmen.infrastructure.domain.PostalCodeRepository;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;

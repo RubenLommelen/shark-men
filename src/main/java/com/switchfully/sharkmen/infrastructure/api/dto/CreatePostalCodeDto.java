@@ -1,7 +1,12 @@
 package com.switchfully.sharkmen.infrastructure.api.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class CreatePostalCodeDto {
+    @NotBlank(message = "zipcode is blank or null")
     private final String zipcode;
+    @NotBlank(message = "city is blank or null")
     private final String city;
 
     public CreatePostalCodeDto(String zipcode, String city) {
