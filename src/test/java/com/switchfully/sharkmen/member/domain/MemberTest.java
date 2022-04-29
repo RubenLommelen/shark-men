@@ -1,17 +1,10 @@
 package com.switchfully.sharkmen.member.domain;
 
-import com.switchfully.sharkmen.infrastructure.Address;
-import com.switchfully.sharkmen.infrastructure.PostalCode;
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
-import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
-import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
+import com.switchfully.sharkmen.infrastructure.domain.Address;
+import com.switchfully.sharkmen.infrastructure.domain.PostalCode;
 import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
-
-import static io.restassured.http.ContentType.JSON;
 
 class MemberTest {
 

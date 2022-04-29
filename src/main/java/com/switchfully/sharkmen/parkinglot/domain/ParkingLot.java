@@ -1,6 +1,6 @@
 package com.switchfully.sharkmen.parkinglot.domain;
 
-import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.infrastructure.domain.Address;
 import com.switchfully.sharkmen.parkinglot.Category;
 import com.switchfully.sharkmen.parkinglot.ContactPerson;
 

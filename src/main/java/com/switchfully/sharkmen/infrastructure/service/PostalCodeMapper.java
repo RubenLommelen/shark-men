@@ -1,6 +1,6 @@
 package com.switchfully.sharkmen.infrastructure.service;
 
-import com.switchfully.sharkmen.infrastructure.PostalCode;
+import com.switchfully.sharkmen.infrastructure.domain.PostalCode;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import org.slf4j.Logger;

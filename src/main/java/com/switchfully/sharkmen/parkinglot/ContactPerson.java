@@ -1,6 +1,6 @@
 package com.switchfully.sharkmen.parkinglot;
 
-import com.switchfully.sharkmen.infrastructure.Address;
+import com.switchfully.sharkmen.infrastructure.domain.Address;
 
 import javax.persistence.*;
 
