@@ -42,18 +42,13 @@ public class ParkingLotService {
     }
 
     public CreateParkingLotResultDto createParkingLot(CreateParkingLotDto parkingLotDto) {
-        PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDto.getCreateAddressDto().getCreatePostalCodeDto());
-        PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDto.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCodeDto());
-        Address parkingLotAddress = addressMapper.toAddress(parkingLotDto.getCreateAddressDto());
-        Address contactPersonAddress = addressMapper.toAddress(parkingLotDto.getCreateContactPersonDto().getCreateAddressDto());
-        ContactPerson contactPerson = contactPersonMapper.toContactPerson(parkingLotDto.getCreateContactPersonDto());
-        ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto, contactPerson, parkingLotAddress);
+        ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto);
 
-        postalCodeRepository.save(parkingLotPostalCode);
-        postalCodeRepository.save(contactPersonPostalCode);
-        addressRepository.save(parkingLotAddress);
-        addressRepository.save(contactPersonAddress);
-        contactPersonRepository.save(contactPerson);
+        postalCodeRepository.save(parkingLot.getAddress().getPostalCode());
+        postalCodeRepository.save(parkingLot.getContactPerson().getAddress().getPostalCode());
+        addressRepository.save(parkingLot.getAddress());
+        addressRepository.save(parkingLot.getContactPerson().getAddress());
+        contactPersonRepository.save(parkingLot.getContactPerson());
         parkingLotRepository.save(parkingLot);
 
         return parkingLotMapper.toCreateParkingLotResultDto(parkingLot);
