@@ -19,7 +19,6 @@ public class PostalCodeMapper {
 
     public PostalCode toPostalCode (CreatePostalCodeDto postalCodeDto){
         postalCodeMapperLogger.info("PostalCodeDto conversion to PostalCode");
-        System.out.println(postalCodeDto);
         return new PostalCode(postalCodeDto.getZipcode(), postalCodeDto.getCity());
     }
 
