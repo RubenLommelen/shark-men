@@ -9,7 +9,8 @@ import java.util.Random;
 public class PostalCode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "postal_code_seq")
+    @SequenceGenerator(name = "postal_code_seq", sequenceName = "postal_code_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "ZIP_CODE")

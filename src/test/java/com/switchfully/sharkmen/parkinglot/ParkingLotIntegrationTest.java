@@ -37,7 +37,7 @@ public class ParkingLotIntegrationTest {
                         "22",
                         "a@bob.com",
                         new CreateAddressDto("streetName",
-                                "streetNumber",
+                                "1",
                                 new CreatePostalCodeDto(
                                         "3000",
                                         "Leuven"
@@ -45,7 +45,7 @@ public class ParkingLotIntegrationTest {
                         )
                 ),
                 new CreateAddressDto("streetName",
-                        "streetNumber",
+                        "1",
                         new CreatePostalCodeDto(
                                 "3000",
                                 "Leuven"

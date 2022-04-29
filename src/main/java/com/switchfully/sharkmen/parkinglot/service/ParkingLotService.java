@@ -48,8 +48,6 @@ public class ParkingLotService {
         ContactPerson contactPerson = contactPersonMapper.toContactPerson(parkingLotDTO.getCreateContactPersonDto(), contactPersonAddress);
         ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDTO, contactPerson, parkingLotAddress);
 
-        System.out.println(parkingLot);
-
         postalCodeRepository.save(parkingLotPostalCode);
         postalCodeRepository.save(contactPersonPostalCode);
         addressRepository.save(parkingLotAddress);

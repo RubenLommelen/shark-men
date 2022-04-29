@@ -9,7 +9,8 @@ import javax.persistence.*;
 public class ContactPerson {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_person_seq")
+    @SequenceGenerator(name = "contact_person_seq", sequenceName = "contact_person_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "FIRST_NAME")
@@ -18,7 +19,7 @@ public class ContactPerson {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "MOBILE_PONE_NUMBER")
+    @Column(name = "MOBILE_PHONE_NUMBER")
     private String mobilePhoneNumber;
 
     @Column(name = "TELEPHONE_NUMBER")
