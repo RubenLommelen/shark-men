@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberMapper {
 
-    private final Logger memberMapperLogger = LoggerFactory.getLogger(MemberMapper.class) ;
+    private final Logger memberMapperLogger = LoggerFactory.getLogger(MemberMapper.class);
 
     private final AddressMapper addressMapper;
     private final LicensePlateMapper licensePlateMapper;
@@ -35,7 +35,7 @@ public class MemberMapper {
                 member.getRegistrationDate());
     }
 
-    Member ToMember(CreateMemberDto createMemberDto){
+    Member ToMember(CreateMemberDto createMemberDto) {
         memberMapperLogger.info("MemberDto conversion to Member");
         return new Member(
                 createMemberDto.getFirstName(),

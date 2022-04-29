@@ -6,10 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Objects;
-import java.util.Random;
 
 @Entity
 @Table(name = "MEMBER")

@@ -2,7 +2,6 @@ package com.switchfully.sharkmen.infrastructure;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Random;
 
 @Entity
 @Table(name = "ADDRESS")

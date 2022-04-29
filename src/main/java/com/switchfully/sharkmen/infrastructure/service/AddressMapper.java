@@ -4,7 +4,6 @@ import com.switchfully.sharkmen.infrastructure.Address;
 import com.switchfully.sharkmen.infrastructure.PostalCode;
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
-import com.switchfully.sharkmen.member.service.MemberMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddressMapper {
 
-    private Logger addressMapperLogger = LoggerFactory.getLogger(AddressMapper.class) ;
+    private final Logger addressMapperLogger = LoggerFactory.getLogger(AddressMapper.class);
 
     private final PostalCodeMapper postalCodeMapper;
 
@@ -20,16 +19,16 @@ public class AddressMapper {
         this.postalCodeMapper = postalCodeMapper;
     }
 
-    public Address toAddress (AddressDto addressDto){
+    public Address toAddress(AddressDto addressDto) {
         addressMapperLogger.info("AddressDto conversion to Address");
         return new Address(
                 addressDto.getStreetName(),
                 addressDto.getStreetNumber(),
                 postalCodeMapper.toPostalCode(addressDto.getPostalCodeDto())
-                );
+        );
     }
 
-    public Address toAddress (CreateAddressDto createAddressDto, PostalCode postalCode){
+    public Address toAddress(CreateAddressDto createAddressDto, PostalCode postalCode) {
         addressMapperLogger.info("AddressDto conversion to Address");
         return new Address(
                 createAddressDto.getStreetName(),
@@ -38,7 +37,7 @@ public class AddressMapper {
         );
     }
 
-    public AddressDto toDto (Address address){
+    public AddressDto toDto(Address address) {
         addressMapperLogger.info("Address conversion to AddressDto");
         return new AddressDto(
                 address.getStreetName(),

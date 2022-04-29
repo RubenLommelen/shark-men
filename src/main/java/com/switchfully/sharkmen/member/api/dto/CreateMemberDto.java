@@ -2,7 +2,6 @@ package com.switchfully.sharkmen.member.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
-import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 
 public class CreateMemberDto {
     private final String firstName;
@@ -25,7 +24,9 @@ public class CreateMemberDto {
         return firstName;
     }
 
-    public String getLastName() {return lastName; }
+    public String getLastName() {
+        return lastName;
+    }
 
     public AddressDto getAddress() {
         return address;

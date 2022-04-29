@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
-import java.util.Objects;
+
 @Entity
 @Table(name = "LICENSE_PLATE")
 public class LicensePlate {
     @Transient
-    private Logger licensePlateLogger = LoggerFactory.getLogger(LicensePlate.class);
+    private final Logger licensePlateLogger = LoggerFactory.getLogger(LicensePlate.class);
     @Id
     @GeneratedValue
     private Long licensePlateId;

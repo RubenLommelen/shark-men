@@ -2,9 +2,7 @@ package com.switchfully.sharkmen.member.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
-import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 public class MemberDto {
