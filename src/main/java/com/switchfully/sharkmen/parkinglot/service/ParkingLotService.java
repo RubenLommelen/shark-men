@@ -41,7 +41,6 @@ public class ParkingLotService {
     }
 
     public CreateParkingLotResultDTO createParkingLot(CreateParkingLotDTO parkingLotDTO) {
-        System.out.println(parkingLotDTO);
         PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateAddressDto().getCreatePostalCodeDto());
         PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDTO.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCodeDto());
         Address parkingLotAddress = addressMapper.toAddress(parkingLotDTO.getCreateAddressDto(), parkingLotPostalCode);
