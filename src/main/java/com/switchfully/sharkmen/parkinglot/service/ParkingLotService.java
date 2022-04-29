@@ -1,12 +1,10 @@
 package com.switchfully.sharkmen.parkinglot.service;
 
-import com.switchfully.sharkmen.infrastructure.domain.Address;
-import com.switchfully.sharkmen.infrastructure.domain.PostalCode;
 import com.switchfully.sharkmen.infrastructure.domain.AddressRepository;
 import com.switchfully.sharkmen.infrastructure.domain.PostalCodeRepository;
+import com.switchfully.sharkmen.infrastructure.exceptions.PhoneNumbersMissingException;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.infrastructure.service.PostalCodeMapper;
-import com.switchfully.sharkmen.parkinglot.ContactPerson;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.domain.ContactPersonRepository;
@@ -14,12 +12,9 @@ import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
-import javax.xml.validation.SchemaFactoryLoader;
 
 @Service
 @Transactional
@@ -48,6 +43,7 @@ public class ParkingLotService {
     }
 
     public CreateParkingLotResultDto createParkingLot(CreateParkingLotDto parkingLotDto) {
+        parkingLotServiceLogger.info("Started creating CreateParkingLotResultDto");
         validatePhoneNumbers(parkingLotDto);
         ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto);
 
@@ -58,6 +54,7 @@ public class ParkingLotService {
         contactPersonRepository.save(parkingLot.getContactPerson());
         parkingLotRepository.save(parkingLot);
 
+        parkingLotServiceLogger.info("Successfully created CreateParkingLotResultDto (id: " + parkingLot.getId() + ")");
         return parkingLotMapper.toCreateParkingLotResultDto(parkingLot);
     }
 
@@ -66,8 +63,8 @@ public class ParkingLotService {
                 || parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber().isBlank())
                 && (parkingLotDto.getCreateContactPersonDto().getPhoneNumber() == null
                 || parkingLotDto.getCreateContactPersonDto().getPhoneNumber().isBlank())) {
-            parkingLotServiceLogger.error("Phone numbers are null or blank, at least 1 need to be filled in");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Both phone numbers are blank or null");
+            parkingLotServiceLogger.error("Phone numbers are null or blank, at least 1 needs to be filled in");
+            throw new PhoneNumbersMissingException("Both phone numbers are blank or null");
         }
     }
 }
