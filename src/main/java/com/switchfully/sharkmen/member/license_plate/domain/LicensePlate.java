@@ -3,19 +3,28 @@ package com.switchfully.sharkmen.member.license_plate.domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
+@Table(name = "LICENSE_PLATE")
 public class LicensePlate {
-
+    @Transient
     private Logger licensePlateLogger = LoggerFactory.getLogger(LicensePlate.class);
-
-    private final String licensePlateNumber;
-    private final String country;
+    @Id
+    @GeneratedValue
+    private Long licensePlateId;
+    @Column(name = "LICENSE_PLATE_NUMBER")
+    private String licensePlateNumber;
+    @Column(name = "COUNTRY")
+    private String country;
 
     public LicensePlate(String licensePlateNumber, String country) {
         fieldsNullCheck(licensePlateNumber, country);
         this.licensePlateNumber = licensePlateNumber;
         this.country = country;
+    }
+
+    public LicensePlate() {
     }
 
     private void fieldsNullCheck(String licensePlateNumber, String country) {
