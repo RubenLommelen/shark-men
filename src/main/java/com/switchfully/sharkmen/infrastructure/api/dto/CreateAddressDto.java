@@ -19,7 +19,16 @@ public class CreateAddressDto {
         return streetNumber;
     }
 
-    public CreatePostalCodeDto getCreatePostalCode() {
+    public CreatePostalCodeDto getCreatePostalCodeDto() {
         return createPostalCodeDto;
+    }
+
+    @Override
+    public String toString() {
+        return "CreateAddressDto{" +
+                "streetName='" + streetName + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
+                ", createPostalCodeDto=" + createPostalCodeDto +
+                '}';
     }
 }

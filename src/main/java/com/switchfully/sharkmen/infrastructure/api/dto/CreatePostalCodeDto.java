@@ -16,4 +16,12 @@ public class CreatePostalCodeDto {
     public String getCity() {
         return city;
     }
+
+    @Override
+    public String toString() {
+        return "CreatePostalCodeDto{" +
+                "zipcode='" + zipcode + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

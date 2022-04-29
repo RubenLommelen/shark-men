@@ -31,4 +31,12 @@ public class PostalCodeDto {
     public int hashCode() {
         return Objects.hash(zipcode, city);
     }
+
+    @Override
+    public String toString() {
+        return "PostalCodeDto{" +
+                "zipcode='" + zipcode + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
