@@ -23,7 +23,7 @@ public class AddressMapper {
         return new Address(
                 addressDto.getStreetName(),
                 addressDto.getStreetNumber(),
-                postalCodeMapper.toPostalCode(addressDto.getPostalCode())
+                postalCodeMapper.toPostalCode(addressDto.getPostalCodeDto())
                 );
     }
 
