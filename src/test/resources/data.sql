@@ -1,7 +1,7 @@
 INSERT INTO license_plate(id,
                           license_plate_number,
                           country)
-VALUES (1,
+VALUES (nextval('license_plate_seq'),
         'JA21HJH',
         'UK');
 
@@ -30,7 +30,7 @@ INSERT INTO member(id,
                    email_address,
                    fk_license_plate_id,
                    registration_date)
-VALUES (1,
+VALUES (nextval('member_seq'),
         'Ron',
         'Weasley',
         1,

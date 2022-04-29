@@ -12,9 +12,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "MEMBER")
 public class Member {
-    @Transient
-    private final Logger memberLogger = LoggerFactory.getLogger(Member.class);
-
+    //@Transient
+    //private final Logger memberLogger = LoggerFactory.getLogger(Member.class);
+//
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")

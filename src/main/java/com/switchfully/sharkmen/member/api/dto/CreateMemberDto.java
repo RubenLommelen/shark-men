@@ -2,7 +2,6 @@ package com.switchfully.sharkmen.member.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.CreateLicensePlateDto;
-import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -23,7 +22,7 @@ public class CreateMemberDto {
     private final String emailAddress;
     @Valid
     @NotNull(message = "LicensePlate is null or blank")
-    private final CreateLicensePlateDto createLicensePlate;
+    private final CreateLicensePlateDto licensePlate;
 
     public CreateMemberDto(String firstName, String lastName, CreateAddressDto address, String phoneNumber, String emailAddress, CreateLicensePlateDto createLicensePlate) {
         this.firstName = firstName;
@@ -31,7 +30,7 @@ public class CreateMemberDto {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
-        this.createLicensePlate = createLicensePlate;
+        this.licensePlate = createLicensePlate;
     }
 
     public String getFirstName() {
@@ -55,7 +54,7 @@ public class CreateMemberDto {
     }
 
     public CreateLicensePlateDto getLicensePlate() {
-        return createLicensePlate;
+        return licensePlate;
     }
 
 
