@@ -21,7 +21,7 @@ class MemberServiceTest {
     private MemberService memberService;
 
     @Test
-    void checkMemberConnection(){
+    void checkMemberConnection() {
         Member expectedMember = new Member("Harry ", "Potter"
                 , new Address("Privet drive", "4", new PostalCode("WD25", "Watfort")),
                 "0475080808", "HarryPotter@Hogwartsuk", new LicensePlate("1515", "UK"));

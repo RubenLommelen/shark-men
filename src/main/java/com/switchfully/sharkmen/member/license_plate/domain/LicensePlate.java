@@ -5,13 +5,15 @@ import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.util.Objects;
+
 @Entity
 @Table(name = "LICENSE_PLATE")
 public class LicensePlate {
     @Transient
-    private Logger licensePlateLogger = LoggerFactory.getLogger(LicensePlate.class);
+    private final Logger licensePlateLogger = LoggerFactory.getLogger(LicensePlate.class);
     @Id
-    @GeneratedValue
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long licensePlateId;
     @Column(name = "LICENSE_PLATE_NUMBER")
     private String licensePlateNumber;
@@ -44,5 +46,18 @@ public class LicensePlate {
 
     public String getCountry() {
         return country;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LicensePlate that = (LicensePlate) o;
+        return Objects.equals(licensePlateNumber, that.licensePlateNumber) && Objects.equals(country, that.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(licensePlateNumber, country);
     }
 }

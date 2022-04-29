@@ -1,11 +1,12 @@
 package com.switchfully.sharkmen.member.api;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
-import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 import io.restassured.RestAssured;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ class MemberControllerTest {
     void givenMember_WhenPostMembers_ThenReturnMemberId() {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
-                , new AddressDto("Privet drive", "4", new PostalCodeDto("WD25", "Watfort")),
+                , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
                 "0475080808", "HarryPotter@Hogwarts.uk", new LicensePlateDto("1515", "UK"));
         //  WHEN
         MemberDto actualMemberDto = RestAssured
@@ -57,13 +58,13 @@ class MemberControllerTest {
     }
 
     @Test
-    void GivenWrongEmailAddressFormat_WhenCreatingNewMember_ThenThrowIllegalArgException(){
+    void GivenWrongEmailAddressFormat_WhenCreatingNewMember_ThenThrowIllegalArgException() {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
-                , new AddressDto("Privet drive", "4", new PostalCodeDto("WD25", "Watfort")),
+                , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
                 "0475080808", "HarryPotter@Hogwartsuk", new LicensePlateDto("1515", "UK"));
 //  WHEN
-         RestAssured
+        RestAssured
                 .given()
                 .body(expectedCreateMemberDto)
                 .accept(JSON)
