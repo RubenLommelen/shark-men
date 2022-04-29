@@ -1,17 +1,17 @@
 package com.switchfully.sharkmen.parkinglot.service;
 
-import com.switchfully.sharkmen.infrastructure.domain.Address;
-import com.switchfully.sharkmen.infrastructure.domain.PostalCode;
 import com.switchfully.sharkmen.infrastructure.domain.AddressRepository;
 import com.switchfully.sharkmen.infrastructure.domain.PostalCodeRepository;
+import com.switchfully.sharkmen.infrastructure.exceptions.PhoneNumbersMissingException;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.infrastructure.service.PostalCodeMapper;
-import com.switchfully.sharkmen.parkinglot.ContactPerson;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.domain.ContactPersonRepository;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class ParkingLotService {
+    private final Logger parkingLotServiceLogger = LoggerFactory.getLogger(ParkingLotService.class);
 
     private final AddressMapper addressMapper;
     private final PostalCodeMapper postalCodeMapper;
@@ -42,20 +43,28 @@ public class ParkingLotService {
     }
 
     public CreateParkingLotResultDto createParkingLot(CreateParkingLotDto parkingLotDto) {
-        PostalCode parkingLotPostalCode = postalCodeMapper.toPostalCode(parkingLotDto.getCreateAddressDto().getCreatePostalCodeDto());
-        PostalCode contactPersonPostalCode = postalCodeMapper.toPostalCode(parkingLotDto.getCreateContactPersonDto().getCreateAddressDto().getCreatePostalCodeDto());
-        Address parkingLotAddress = addressMapper.toAddress(parkingLotDto.getCreateAddressDto());
-        Address contactPersonAddress = addressMapper.toAddress(parkingLotDto.getCreateContactPersonDto().getCreateAddressDto());
-        ContactPerson contactPerson = contactPersonMapper.toContactPerson(parkingLotDto.getCreateContactPersonDto());
-        ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto, contactPerson, parkingLotAddress);
+        parkingLotServiceLogger.info("Started creating CreateParkingLotResultDto");
+        validatePhoneNumbers(parkingLotDto);
+        ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto);
 
-        postalCodeRepository.save(parkingLotPostalCode);
-        postalCodeRepository.save(contactPersonPostalCode);
-        addressRepository.save(parkingLotAddress);
-        addressRepository.save(contactPersonAddress);
-        contactPersonRepository.save(contactPerson);
+        postalCodeRepository.save(parkingLot.getAddress().getPostalCode());
+        postalCodeRepository.save(parkingLot.getContactPerson().getAddress().getPostalCode());
+        addressRepository.save(parkingLot.getAddress());
+        addressRepository.save(parkingLot.getContactPerson().getAddress());
+        contactPersonRepository.save(parkingLot.getContactPerson());
         parkingLotRepository.save(parkingLot);
 
+        parkingLotServiceLogger.info("Successfully created CreateParkingLotResultDto (id: " + parkingLot.getId() + ")");
         return parkingLotMapper.toCreateParkingLotResultDto(parkingLot);
+    }
+
+    private void validatePhoneNumbers(CreateParkingLotDto parkingLotDto) {
+        if ((parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber() == null
+                || parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber().isBlank())
+                && (parkingLotDto.getCreateContactPersonDto().getPhoneNumber() == null
+                || parkingLotDto.getCreateContactPersonDto().getPhoneNumber().isBlank())) {
+            parkingLotServiceLogger.error("Phone numbers are null or blank, at least 1 needs to be filled in");
+            throw new PhoneNumbersMissingException("Both phone numbers are blank or null");
+        }
     }
 }

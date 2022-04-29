@@ -33,6 +33,16 @@ public class ParkingLotMapper {
         );
     }
 
+    public ParkingLot toParkingLot(CreateParkingLotDto parkingLotDTO) {
+        return new ParkingLot(
+                parkingLotDTO.getName(),
+                parkingLotDTO.getCategory(),
+                parkingLotDTO.getCapacity(),
+                contactPersonMapper.toContactPerson(parkingLotDTO.getCreateContactPersonDto()),
+                addressMapper.toAddress(parkingLotDTO.getCreateAddressDto())
+        );
+    }
+
     public CreateParkingLotResultDto toCreateParkingLotResultDto(ParkingLot parkingLot) {
         return new CreateParkingLotResultDto(
                 parkingLot.getId()

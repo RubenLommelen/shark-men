@@ -8,7 +8,7 @@ VALUES (1,
 INSERT INTO postal_code(id,
                         zip_code,
                         city)
-VALUES (1,
+VALUES (nextval('postal_code_seq'),
         'DH16',
         'devon');
 
@@ -16,7 +16,7 @@ INSERT INTO address(id,
                     street_name,
                     street_number,
                     fk_postal_code_id)
-VALUES (1,
+VALUES (nextval('address_seq'),
         'The Burrow',
         '1',
         1);
