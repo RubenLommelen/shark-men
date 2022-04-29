@@ -5,6 +5,7 @@ import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
 import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 public class MemberDto {
     private final Long memberId;
@@ -13,9 +14,9 @@ public class MemberDto {
     private final String phoneNumber;
     private final String emailAddress;
     private final LicensePlateDto licensePlate;
-    private final LocalDate registrationDate;
+    private final OffsetDateTime registrationDate;
 
-    public MemberDto(Long memberId, String name, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, LocalDate registrationDate) {
+    public MemberDto(Long memberId, String name, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, OffsetDateTime registrationDate) {
         this.memberId = memberId;
         this.name = name;
         this.address = address;
@@ -45,7 +46,7 @@ public class MemberDto {
         return licensePlate;
     }
 
-    public LocalDate getRegistrationDate() {
+    public OffsetDateTime getRegistrationDate() {
         return registrationDate;
     }
 

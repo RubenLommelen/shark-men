@@ -5,20 +5,37 @@ import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Objects;
 import java.util.Random;
 
+@Entity
+@Table(name = "MEMBER")
 public class Member {
+    @Transient
     private final Logger memberLogger = LoggerFactory.getLogger(Member.class);
 
-    private final Long memberId;
-    private final String firstName;
-    private final String lastName;
-    private final Address address;
-    private final String phoneNumber;
-    private final String emailAddress;
-    private final LicensePlate licensePlate;
-    private final LocalDate registrationDate;
+    @Id
+    @GeneratedValue
+    private Long memberId;
+    @Column(name = "FIRSTNAME")
+    private String firstName;
+    @Column(name = "LASTNAME")
+    private String lastName;
+    @OneToOne
+    @JoinColumn(name = "FK_ADDRESS_ID")
+    private Address address;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+    @Column(name = "EMAIL_ADDRESS")
+    private String emailAddress;
+    @OneToOne
+    @JoinColumn(name = "FK_LICENSE_PLATE_ID")
+    private LicensePlate licensePlate;
+    @Column(name = "REGISTRATION_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    private OffsetDateTime registrationDate;
 
     public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
         fieldsNullCheck(firstName, lastName, address, phoneNumber, emailAddress, licensePlate);
@@ -28,8 +45,10 @@ public class Member {
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.licensePlate = licensePlate;
-        this.memberId = new Random().nextLong();
-        this.registrationDate = LocalDate.now();
+        this.registrationDate = OffsetDateTime.now();
+    }
+
+    public Member() {
     }
 
     private void fieldsNullCheck(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
@@ -87,7 +106,20 @@ public class Member {
         return licensePlate;
     }
 
-    public LocalDate getRegistrationDate() {
+    public OffsetDateTime getRegistrationDate() {
         return registrationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(memberLogger, member.memberLogger) && Objects.equals(memberId, member.memberId) && Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate) && Objects.equals(registrationDate, member.registrationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(memberLogger, memberId, firstName, lastName, address, phoneNumber, emailAddress, licensePlate, registrationDate);
     }
 }
