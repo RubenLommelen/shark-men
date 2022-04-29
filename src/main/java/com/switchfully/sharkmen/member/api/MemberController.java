@@ -5,6 +5,8 @@ import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.service.MemberService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -19,7 +21,7 @@ public class MemberController {
 
     @PostMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(CREATED)
-    public MemberDto registerMember(@RequestBody CreateMemberDto createMemberDto) {
+    public MemberDto registerMember(@Valid @RequestBody CreateMemberDto createMemberDto) {
         return memberService.registerMember(createMemberDto);
     }
 

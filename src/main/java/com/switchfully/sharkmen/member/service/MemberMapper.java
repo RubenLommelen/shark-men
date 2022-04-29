@@ -23,11 +23,12 @@ public class MemberMapper {
         this.licensePlateMapper = licensePlateMapper;
     }
 
-    MemberDto ToDto(Member member) {
+    public MemberDto ToDto(Member member) {
         memberMapperLogger.info("Member conversion to MemberDto");
         return new MemberDto(
                 member.getMemberId(),
                 member.getFirstName(),
+                member.getLastName(),
                 addressMapper.toDto(member.getAddress()),
                 member.getPhoneNumber(),
                 member.getEmailAddress(),
@@ -35,7 +36,7 @@ public class MemberMapper {
                 member.getRegistrationDate());
     }
 
-    Member ToMember(CreateMemberDto createMemberDto) {
+    public Member ToMember(CreateMemberDto createMemberDto) {
         memberMapperLogger.info("MemberDto conversion to Member");
         return new Member(
                 createMemberDto.getFirstName(),

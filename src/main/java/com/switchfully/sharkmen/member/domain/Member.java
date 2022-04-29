@@ -17,7 +17,8 @@ public class Member {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
+    @SequenceGenerator(name = "member_seq", sequenceName = "member_seq", allocationSize = 1)
     private Long memberId;
     @Column(name = "FIRSTNAME")
     private String firstName;
@@ -37,7 +38,6 @@ public class Member {
     private OffsetDateTime registrationDate;
 
     public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
-        fieldsNullCheck(firstName, lastName, address, phoneNumber, emailAddress, licensePlate);
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -50,32 +50,6 @@ public class Member {
     public Member() {
     }
 
-    private void fieldsNullCheck(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
-        if (firstName == null) {
-            memberLogger.error("First name is null !");
-            throw new NullPointerException("Please provide a first name!");
-        }
-        if (lastName == null) {
-            memberLogger.error("Last name is null !");
-            throw new NullPointerException("Please provide a last name!");
-        }
-        if (address == null) {
-            memberLogger.error("Address is null !");
-            throw new NullPointerException("Please provide an address!");
-        }
-        if (phoneNumber == null) {
-            memberLogger.error("Phone number is null !");
-            throw new NullPointerException("Please provide a phone number!");
-        }
-        if (emailAddress == null) {
-            memberLogger.error("Email address is null !");
-            throw new NullPointerException("Please provide an email address!");
-        }
-        if (licensePlate == null) {
-            memberLogger.error("License plate is null !");
-            throw new NullPointerException("Please provide a licensePlate!");
-        }
-    }
 
     public Long getMemberId() {
         return memberId;

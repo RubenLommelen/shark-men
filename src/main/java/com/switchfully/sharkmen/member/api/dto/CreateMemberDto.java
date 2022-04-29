@@ -1,24 +1,37 @@
 package com.switchfully.sharkmen.member.api.dto;
 
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
+import com.switchfully.sharkmen.member.license_plate.api.dto.CreateLicensePlateDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
 
-public class CreateMemberDto {
-    private final String firstName;
-    private final String lastName;
-    private final CreateAddressDto address;
-    private final String phoneNumber;
-    private final String emailAddress;
-    private final LicensePlateDto licensePlate;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-    public CreateMemberDto(String firstName, String lastName, CreateAddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate) {
+public class CreateMemberDto {
+    @NotBlank(message = "FirstName is blank or null")
+    private final String firstName;
+    @NotBlank(message = "LastName is blank or null")
+    private final String lastName;
+    @Valid
+    @NotNull(message = "Address is null or blank")
+    private final CreateAddressDto address;
+    @NotBlank(message = "PhoneNumber is blank or null")
+    private final String phoneNumber;
+    @Email(regexp = "^(\\S+)@(\\S+)\\.([a-zA-Z]+)$", message = "email is not in the right format")
+    private final String emailAddress;
+    @Valid
+    @NotNull(message = "LicensePlate is null or blank")
+    private final CreateLicensePlateDto createLicensePlate;
+
+    public CreateMemberDto(String firstName, String lastName, CreateAddressDto address, String phoneNumber, String emailAddress, CreateLicensePlateDto createLicensePlate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
-        this.licensePlate = licensePlate;
+        this.createLicensePlate = createLicensePlate;
     }
 
     public String getFirstName() {
@@ -41,8 +54,8 @@ public class CreateMemberDto {
         return emailAddress;
     }
 
-    public LicensePlateDto getLicensePlate() {
-        return licensePlate;
+    public CreateLicensePlateDto getLicensePlate() {
+        return createLicensePlate;
     }
 
 

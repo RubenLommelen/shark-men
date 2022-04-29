@@ -13,7 +13,8 @@ public class LicensePlate {
     private final Logger licensePlateLogger = LoggerFactory.getLogger(LicensePlate.class);
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "license_plate_seq")
+    @SequenceGenerator(name = "license_plate_seq", sequenceName = "license_plate_seq", allocationSize = 1)
     private Long licensePlateId;
     @Column(name = "LICENSE_PLATE_NUMBER")
     private String licensePlateNumber;

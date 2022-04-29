@@ -7,16 +7,18 @@ import java.time.OffsetDateTime;
 
 public class MemberDto {
     private final Long memberId;
-    private final String name;
+    private final String firstName;
+    private final String lastName;
     private final AddressDto address;
     private final String phoneNumber;
     private final String emailAddress;
     private final LicensePlateDto licensePlate;
     private final OffsetDateTime registrationDate;
 
-    public MemberDto(Long memberId, String name, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, OffsetDateTime registrationDate) {
+    public MemberDto(Long memberId, String firstName, String lastName, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, OffsetDateTime registrationDate) {
         this.memberId = memberId;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
@@ -24,8 +26,12 @@ public class MemberDto {
         this.registrationDate = registrationDate;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public AddressDto getAddress() {
@@ -51,4 +57,6 @@ public class MemberDto {
     public Long getMemberId() {
         return memberId;
     }
+
+
 }

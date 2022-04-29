@@ -1,15 +1,18 @@
 package com.switchfully.sharkmen.member.api;
 
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
-import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
+import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
+import com.switchfully.sharkmen.member.license_plate.api.dto.CreateLicensePlateDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
+import com.switchfully.sharkmen.member.license_plate.service.LicensePlateMapper;
+import com.switchfully.sharkmen.member.service.MemberMapper;
 import io.restassured.RestAssured;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -27,12 +30,18 @@ class MemberControllerTest {
     @LocalServerPort
     private int port;
 
+    @Autowired
+    private MemberMapper memberMapper;
+
+
     @Test
     void givenMember_WhenPostMembers_ThenReturnMemberId() {
         //  GIVEN
+
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
                 , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
-                "0475080808", "HarryPotter@Hogwarts.uk", new LicensePlateDto("1515", "UK"));
+                "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto("1515", "UK"));
+        MemberDto expectedMemberDto = memberMapper.ToDto(memberMapper.ToMember(expectedCreateMemberDto));
         //  WHEN
         MemberDto actualMemberDto = RestAssured
                 .given()
@@ -49,11 +58,12 @@ class MemberControllerTest {
                 .as(MemberDto.class);
         //  THEN
         Assertions.assertThat(actualMemberDto.getMemberId()).isNotNull();
-        Assertions.assertThat(actualMemberDto.getName()).isEqualTo(expectedCreateMemberDto.getFirstName());
-        Assertions.assertThat(actualMemberDto.getAddress()).isEqualTo(expectedCreateMemberDto.getAddress());
-        Assertions.assertThat(actualMemberDto.getPhoneNumber()).isEqualTo(expectedCreateMemberDto.getPhoneNumber());
-        Assertions.assertThat(actualMemberDto.getEmailAddress()).isEqualTo(expectedCreateMemberDto.getEmailAddress());
-        Assertions.assertThat(actualMemberDto.getLicensePlate()).isEqualTo(expectedCreateMemberDto.getLicensePlate());
+        Assertions.assertThat(actualMemberDto.getFirstName()).isEqualTo(expectedMemberDto.getFirstName());
+        Assertions.assertThat(actualMemberDto.getLastName()).isEqualTo(expectedMemberDto.getLastName());
+        Assertions.assertThat(actualMemberDto.getAddress()).isEqualTo(expectedMemberDto.getAddress());
+        Assertions.assertThat(actualMemberDto.getPhoneNumber()).isEqualTo(expectedMemberDto.getPhoneNumber());
+        Assertions.assertThat(actualMemberDto.getEmailAddress()).isEqualTo(expectedMemberDto.getEmailAddress());
+        Assertions.assertThat(actualMemberDto.getLicensePlate()).isEqualTo(expectedMemberDto.getLicensePlate());
 
     }
 
@@ -62,7 +72,7 @@ class MemberControllerTest {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
                 , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
-                "0475080808", "HarryPotter@Hogwartsuk", new LicensePlateDto("1515", "UK"));
+                "0475080808", "HarryPotter@Hogwartsuk", new CreateLicensePlateDto("1515", "UK"));
 //  WHEN
         RestAssured
                 .given()
