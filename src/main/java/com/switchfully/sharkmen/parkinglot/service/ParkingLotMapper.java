@@ -8,6 +8,7 @@ import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,10 +20,12 @@ public class ParkingLotMapper {
 
     private final ContactPersonMapper contactPersonMapper;
     private final AddressMapper addressMapper;
+    private final ParkingLotRepository parkingLotRepository;
 
-    public ParkingLotMapper(ContactPersonMapper contactPersonMapper, AddressMapper addressMapper) {
+    public ParkingLotMapper(ContactPersonMapper contactPersonMapper, AddressMapper addressMapper, ParkingLotRepository parkingLotRepository) {
         this.contactPersonMapper = contactPersonMapper;
         this.addressMapper = addressMapper;
+        this.parkingLotRepository = parkingLotRepository;
     }
 
     public ParkingLot toParkingLot(CreateParkingLotDto parkingLotDTO) {
@@ -34,6 +37,11 @@ public class ParkingLotMapper {
                 addressMapper.toAddress(parkingLotDTO.getAddress())
         );
     }
+
+    public ParkingLot toParkingLot(Long parkingLotId) {
+        return parkingLotRepository.getById(parkingLotId);
+    }
+
 
     public CreateParkingLotResultDto toCreateParkingLotResultDto(ParkingLot parkingLot) {
         return new CreateParkingLotResultDto(

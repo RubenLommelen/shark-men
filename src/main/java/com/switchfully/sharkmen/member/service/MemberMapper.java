@@ -5,10 +5,15 @@ import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.domain.Member;
+import com.switchfully.sharkmen.member.domain.MemberRepository;
 import com.switchfully.sharkmen.member.license_plate.service.LicensePlateMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class MemberMapper {
@@ -17,10 +22,12 @@ public class MemberMapper {
 
     private final AddressMapper addressMapper;
     private final LicensePlateMapper licensePlateMapper;
+    private final MemberRepository memberRepository;
 
-    public MemberMapper(AddressMapper addressMapper, LicensePlateMapper licensePlateMapper) {
+    public MemberMapper(AddressMapper addressMapper, LicensePlateMapper licensePlateMapper, MemberRepository memberRepository) {
         this.addressMapper = addressMapper;
         this.licensePlateMapper = licensePlateMapper;
+        this.memberRepository = memberRepository;
     }
 
     public MemberDto ToDto(Member member) {
@@ -50,4 +57,8 @@ public class MemberMapper {
 
     }
 
+    public Member toMember(Long memberId) {
+        return memberRepository.getById(memberId);
+
+    }
 }
