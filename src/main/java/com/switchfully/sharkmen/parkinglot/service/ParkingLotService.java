@@ -21,21 +21,15 @@ import javax.transaction.Transactional;
 public class ParkingLotService {
     private final Logger parkingLotServiceLogger = LoggerFactory.getLogger(ParkingLotService.class);
 
-    private final AddressMapper addressMapper;
-    private final PostalCodeMapper postalCodeMapper;
     private final ParkingLotMapper parkingLotMapper;
-    private final ContactPersonMapper contactPersonMapper;
 
     private final AddressRepository addressRepository;
     private final PostalCodeRepository postalCodeRepository;
     private final ParkingLotRepository parkingLotRepository;
     private final ContactPersonRepository contactPersonRepository;
 
-    public ParkingLotService(AddressMapper addressMapper, PostalCodeMapper postalCodeMapper, ParkingLotMapper parkingLotMapper, ContactPersonMapper contactPersonMapper, AddressRepository addressRepository, PostalCodeRepository postalCodeRepository, ParkingLotRepository parkingLotRepository, ContactPersonRepository contactPersonRepository) {
-        this.addressMapper = addressMapper;
-        this.postalCodeMapper = postalCodeMapper;
+    public ParkingLotService(ParkingLotMapper parkingLotMapper, AddressRepository addressRepository, PostalCodeRepository postalCodeRepository, ParkingLotRepository parkingLotRepository, ContactPersonRepository contactPersonRepository) {
         this.parkingLotMapper = parkingLotMapper;
-        this.contactPersonMapper = contactPersonMapper;
         this.addressRepository = addressRepository;
         this.postalCodeRepository = postalCodeRepository;
         this.parkingLotRepository = parkingLotRepository;
@@ -47,11 +41,6 @@ public class ParkingLotService {
         validatePhoneNumbers(parkingLotDto);
         ParkingLot parkingLot = parkingLotMapper.toParkingLot(parkingLotDto);
 
-        postalCodeRepository.save(parkingLot.getAddress().getPostalCode());
-        postalCodeRepository.save(parkingLot.getContactPerson().getAddress().getPostalCode());
-        addressRepository.save(parkingLot.getAddress());
-        addressRepository.save(parkingLot.getContactPerson().getAddress());
-        contactPersonRepository.save(parkingLot.getContactPerson());
         parkingLotRepository.save(parkingLot);
 
         parkingLotServiceLogger.info("Successfully created CreateParkingLotResultDto (id: " + parkingLot.getId() + ")");

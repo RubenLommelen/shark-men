@@ -3,6 +3,7 @@ package com.switchfully.sharkmen.parkinglot;
 import com.switchfully.sharkmen.infrastructure.domain.Address;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CONTACT_PERSON")
@@ -28,7 +29,7 @@ public class ContactPerson {
     @Column(name = "EMAIL")
     private String email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_ADDRESS_ID")
     private Address address;
 
@@ -83,5 +84,18 @@ public class ContactPerson {
                 ", email='" + email + '\'' +
                 ", address=" + address +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactPerson that = (ContactPerson) o;
+        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(mobilePhoneNumber, that.mobilePhoneNumber) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(email, that.email) && Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, mobilePhoneNumber, phoneNumber, email, address);
     }
 }

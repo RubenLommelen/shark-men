@@ -5,6 +5,7 @@ import com.switchfully.sharkmen.parkinglot.Category;
 import com.switchfully.sharkmen.parkinglot.ContactPerson;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "PARKING_LOT")
@@ -25,11 +26,11 @@ public class ParkingLot {
     @Column(name = "CAPACITY")
     private int capacity;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_CONTACT_PERSON_ID")
     private ContactPerson contactPerson;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_ADDRESS_ID")
     private Address address;
 
@@ -78,5 +79,18 @@ public class ParkingLot {
                 ", contactPerson=" + contactPerson +
                 ", address=" + address +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingLot that = (ParkingLot) o;
+        return capacity == that.capacity && Objects.equals(name, that.name) && category == that.category && Objects.equals(contactPerson, that.contactPerson) && Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, category, capacity, contactPerson, address);
     }
 }
