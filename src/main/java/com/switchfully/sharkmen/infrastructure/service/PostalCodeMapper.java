@@ -12,10 +12,7 @@ public class PostalCodeMapper {
 
     private final Logger postalCodeMapperLogger = LoggerFactory.getLogger(PostalCodeMapper.class) ;
 
-    public PostalCode toPostalCode (PostalCodeDto postalCodeDto){
-        postalCodeMapperLogger.info("PostalCodeDto conversion to PostalCode");
-        return new PostalCode(postalCodeDto.getZipcode(), postalCodeDto.getCity());
-    }
+
 
     public PostalCode toPostalCode (CreatePostalCodeDto postalCodeDto){
         postalCodeMapperLogger.info("CreatePostalCodeDto conversion to PostalCode");

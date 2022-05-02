@@ -18,14 +18,6 @@ public class AddressMapper {
         this.postalCodeMapper = postalCodeMapper;
     }
 
-    public Address toAddress(AddressDto addressDto) {
-        addressMapperLogger.info("AddressDto conversion to Address");
-        return new Address(
-                addressDto.getStreetName(),
-                addressDto.getStreetNumber(),
-                postalCodeMapper.toPostalCode(addressDto.getPostalCodeDto())
-        );
-    }
 
     public Address toAddress(CreateAddressDto createAddressDto) {
         addressMapperLogger.info("CreateAddressDto conversion to Address");
