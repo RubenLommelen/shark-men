@@ -1,6 +1,5 @@
-package com.switchfully.sharkmen.parkinglot.domain;
+package com.switchfully.sharkmen.contact_person.domain;
 
-import com.switchfully.sharkmen.parkinglot.ContactPerson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

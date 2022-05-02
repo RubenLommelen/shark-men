@@ -24,7 +24,7 @@ public class AddressMapper {
         return new Address(
                 createAddressDto.getStreetName(),
                 createAddressDto.getStreetNumber(),
-                postalCodeMapper.toPostalCode(createAddressDto.getCreatePostalCodeDto())
+                postalCodeMapper.toPostalCode(createAddressDto.getPostalCode())
         );
     }
 

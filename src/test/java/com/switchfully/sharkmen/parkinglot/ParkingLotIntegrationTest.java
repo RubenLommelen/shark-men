@@ -2,10 +2,13 @@ package com.switchfully.sharkmen.parkinglot;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateContactPersonDto;
+import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parkinglot.domain.Category;
+import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
+import com.switchfully.sharkmen.parkinglot.service.ParkingLotMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,8 @@ public class ParkingLotIntegrationTest {
 
     @Autowired
     private ParkingLotRepository parkingLotRepository;
+    @Autowired
+    private ParkingLotMapper parkingLotMapper;
 
     @Test
     void createParkingLot_whenCreateParkingLot_thenCreatedSuccessfully() {
@@ -71,8 +76,12 @@ public class ParkingLotIntegrationTest {
                 .extract()
                 .as(CreateParkingLotResultDto.class);
 
+        ParkingLot expectedParkingLot = parkingLotMapper.toParkingLot(parkingLotDto);
+        ParkingLot parkingLotSaved = parkingLotRepository.findById(result.getId()).get();
+
         Assertions.assertThat(result.getId()).isNotNull();
-        Assertions.assertThat(parkingLotRepository.findById(result.getId())).isNotNull();
+        Assertions.assertThat(parkingLotSaved).isNotNull();
+        Assertions.assertThat(parkingLotSaved).isEqualTo(expectedParkingLot);
     }
 
     @Test
