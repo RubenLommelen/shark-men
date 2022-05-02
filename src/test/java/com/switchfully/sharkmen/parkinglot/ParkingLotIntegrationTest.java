@@ -398,8 +398,7 @@ public class ParkingLotIntegrationTest {
                     .jsonPath()
                     .getList(".", ParkingLotOverviewDto.class);
 
-            Assertions.assertThat(resultList).hasSize(1);
-            Assertions.assertThat(resultList.get(0)).isEqualTo(expectedParkingLotDto);
+            Assertions.assertThat(resultList.get(1)).isEqualTo(expectedParkingLotDto);
         }
     }
 
