@@ -1,5 +1,6 @@
 package com.switchfully.sharkmen.parking_allocation.api;
 
+import com.switchfully.sharkmen.infrastructure.exceptions.MemberNotFoundException;
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationDto;
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationResultDto;
 import org.assertj.core.api.Assertions;
@@ -48,7 +49,7 @@ class ParkingAllocationControllerTest {
     @Test
     void startAllocation_whenNonExistingMemberId_getBadRequest() {
         CreateParkingAllocationDto createParkingAllocationDto = new CreateParkingAllocationDto(
-                3000000L,
+                0L,
                 "JA21HJH",
                 1L
         );
