@@ -1,10 +1,15 @@
 package com.switchfully.sharkmen.parkinglot;
 
+import com.switchfully.sharkmen.contact_person.api.dto.ContactPersonDto;
 import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
+import com.switchfully.sharkmen.contact_person.domain.ContactPerson;
+import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
+import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;
 import com.switchfully.sharkmen.parkinglot.domain.Category;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
@@ -20,6 +25,9 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.annotation.DirtiesContext;
 
+import java.util.List;
+
+import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 
@@ -361,12 +369,38 @@ public class ParkingLotIntegrationTest {
                     .assertThat()
                     .statusCode(HttpStatus.BAD_REQUEST.value());
         }
-    };
+    }
+
 
     @Nested
     @DisplayName("Get parking lots tests")
     class GetParkingLotIntegrationTest {
+        @Test
+        void whenGetParkingLots_thenRetrieveListOfParkingLots() {
+            ParkingLotOverviewDto expectedParkingLotDto = new ParkingLotOverviewDto(1L,
+                    "Hogwarts Parking Space",
+                    20,
+                    "123",
+                    "albus@hogwarts.uk"
+            );
 
+            List<ParkingLotOverviewDto> resultList = given()
+                    .baseUri("http://localhost")
+                    .port(port)
+                    .when()
+                    .contentType(JSON)
+                    .get("/parking-lots")
+                    .then()
+                    .assertThat()
+                    .statusCode(HttpStatus.OK.value())
+                    .extract()
+                    .body()
+                    .jsonPath()
+                    .getList(".", ParkingLotOverviewDto.class);
+
+            Assertions.assertThat(resultList).hasSize(1);
+            Assertions.assertThat(resultList.get(0)).isEqualTo(expectedParkingLotDto);
+        }
     }
 
 }

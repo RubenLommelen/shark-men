@@ -3,6 +3,7 @@ package com.switchfully.sharkmen.parkinglot.service;
 import com.switchfully.sharkmen.infrastructure.exceptions.PhoneNumbersMissingException;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -35,6 +37,12 @@ public class ParkingLotService {
 
         parkingLotServiceLogger.info("Successfully created ParkingLot (id: " + parkingLot.getId() + ")");
         return parkingLotMapper.toCreateParkingLotResultDto(parkingLot);
+    }
+
+    public List<ParkingLotOverviewDto> getAllParkingLots() {
+        parkingLotServiceLogger.info("Getting all parking lots");
+        List<ParkingLot> parkingLotList = parkingLotRepository.findAll();
+        return parkingLotMapper.toParkingLotOverviewDto(parkingLotList);
     }
 
     private void validatePhoneNumbers(CreateParkingLotDto parkingLotDto) {
