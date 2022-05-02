@@ -5,31 +5,31 @@ import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.parkinglot.domain.Category;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 public class CreateParkingLotDto {
     @NotBlank(message = "name is blank or null")
     private final String name;
     @NotNull(message = "category is blank or null")
     private final Category category;
-    @Min(value = 0)
+    @Positive
     @NotNull(message = "capacity is null")
     private final int capacity;
     @Valid
     @NotNull(message = "createContactPersonDto is null")
-    private final CreateContactPersonDto createContactPersonDto;
+    private final CreateContactPersonDto contactPerson;
     @Valid
     @NotNull(message = "createAddressDto is null")
-    private final CreateAddressDto createAddressDto;
+    private final CreateAddressDto address;
 
-    public CreateParkingLotDto(String name, Category category, int capacity, CreateContactPersonDto createContactPersonDto, CreateAddressDto createAddressDto) {
+    public CreateParkingLotDto(String name, Category category, int capacity, CreateContactPersonDto contactPerson, CreateAddressDto address) {
         this.name = name;
         this.category = category;
         this.capacity = capacity;
-        this.createContactPersonDto = createContactPersonDto;
-        this.createAddressDto = createAddressDto;
+        this.contactPerson = contactPerson;
+        this.address = address;
     }
 
     public String getName() {
@@ -44,12 +44,12 @@ public class CreateParkingLotDto {
         return capacity;
     }
 
-    public CreateContactPersonDto getCreateContactPersonDto() {
-        return createContactPersonDto;
+    public CreateContactPersonDto getContactPerson() {
+        return contactPerson;
     }
 
-    public CreateAddressDto getCreateAddressDto() {
-        return createAddressDto;
+    public CreateAddressDto getAddress() {
+        return address;
     }
 
     @Override
@@ -58,8 +58,8 @@ public class CreateParkingLotDto {
                 "name='" + name + '\'' +
                 ", category=" + category +
                 ", capacity=" + capacity +
-                ", createContactPersonDto=" + createContactPersonDto +
-                ", createAddressDto=" + createAddressDto +
+                ", contact person=" + contactPerson +
+                ", address =" + address +
                 '}';
     }
 }

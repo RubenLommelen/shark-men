@@ -9,16 +9,16 @@ public class ParkingLotResultDto {
     private final String name;
     private final Category category;
     private final int capacity;
-    private final ContactPersonDto contactPersonDto;
-    private final AddressDto addressDto;
+    private final ContactPersonDto contactPerson;
+    private final AddressDto address;
 
-    public ParkingLotResultDto(Long id, String name, Category category, int capacity, ContactPersonDto contactPersonDto, AddressDto addressDto) {
+    public ParkingLotResultDto(Long id, String name, Category category, int capacity, ContactPersonDto contactPerson, AddressDto address) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.capacity = capacity;
-        this.contactPersonDto = contactPersonDto;
-        this.addressDto = addressDto;
+        this.contactPerson = contactPerson;
+        this.address = address;
     }
 
     public Long getId() {
@@ -37,11 +37,11 @@ public class ParkingLotResultDto {
         return capacity;
     }
 
-    public ContactPersonDto getContactPersonDto() {
-        return contactPersonDto;
+    public ContactPersonDto getContactPerson() {
+        return contactPerson;
     }
 
-    public AddressDto getAddressDto() {
-        return addressDto;
+    public AddressDto getAddress() {
+        return address;
     }
 }

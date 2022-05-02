@@ -23,8 +23,8 @@ public class ParkingLotMapper {
                 parkingLotDTO.getName(),
                 parkingLotDTO.getCategory(),
                 parkingLotDTO.getCapacity(),
-                contactPersonMapper.toContactPerson(parkingLotDTO.getCreateContactPersonDto()),
-                addressMapper.toAddress(parkingLotDTO.getCreateAddressDto())
+                contactPersonMapper.toContactPerson(parkingLotDTO.getContactPerson()),
+                addressMapper.toAddress(parkingLotDTO.getAddress())
         );
     }
 

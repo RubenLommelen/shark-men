@@ -1,11 +1,8 @@
 package com.switchfully.sharkmen.parkinglot.service;
 
-import com.switchfully.sharkmen.infrastructure.domain.AddressRepository;
-import com.switchfully.sharkmen.infrastructure.domain.PostalCodeRepository;
 import com.switchfully.sharkmen.infrastructure.exceptions.PhoneNumbersMissingException;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
-import com.switchfully.sharkmen.contact_person.domain.ContactPersonRepository;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
 import org.slf4j.Logger;
@@ -41,10 +38,10 @@ public class ParkingLotService {
     }
 
     private void validatePhoneNumbers(CreateParkingLotDto parkingLotDto) {
-        if ((parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber() == null
-                || parkingLotDto.getCreateContactPersonDto().getMobilePhoneNumber().isBlank())
-                && (parkingLotDto.getCreateContactPersonDto().getPhoneNumber() == null
-                || parkingLotDto.getCreateContactPersonDto().getPhoneNumber().isBlank())) {
+        if ((parkingLotDto.getContactPerson().getMobilePhoneNumber() == null
+                || parkingLotDto.getContactPerson().getMobilePhoneNumber().isBlank())
+                && (parkingLotDto.getContactPerson().getPhoneNumber() == null
+                || parkingLotDto.getContactPerson().getPhoneNumber().isBlank())) {
             parkingLotServiceLogger.error("Phone numbers are null or blank, at least 1 needs to be filled in");
             throw new PhoneNumbersMissingException("Both phone numbers are blank or null");
         }

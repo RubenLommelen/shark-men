@@ -12,12 +12,12 @@ public class CreateAddressDto {
     private final String streetNumber;
     @Valid
     @NotNull(message = "createPostalCode is null")
-    private final CreatePostalCodeDto createPostalCodeDto;
+    private final CreatePostalCodeDto postalCode;
 
-    public CreateAddressDto(String streetName, String streetNumber, CreatePostalCodeDto createPostalCodeDto) {
+    public CreateAddressDto(String streetName, String streetNumber, CreatePostalCodeDto postalCode) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
-        this.createPostalCodeDto = createPostalCodeDto;
+        this.postalCode = postalCode;
     }
 
     public String getStreetName() {
@@ -28,8 +28,8 @@ public class CreateAddressDto {
         return streetNumber;
     }
 
-    public CreatePostalCodeDto getCreatePostalCodeDto() {
-        return createPostalCodeDto;
+    public CreatePostalCodeDto getPostalCode() {
+        return postalCode;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class CreateAddressDto {
         return "CreateAddressDto{" +
                 "streetName='" + streetName + '\'' +
                 ", streetNumber='" + streetNumber + '\'' +
-                ", createPostalCodeDto=" + createPostalCodeDto +
+                ", postal code=" + postalCode +
                 '}';
     }
 }

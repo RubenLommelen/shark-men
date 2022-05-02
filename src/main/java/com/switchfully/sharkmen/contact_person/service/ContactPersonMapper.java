@@ -22,7 +22,7 @@ public class ContactPersonMapper {
                 createContactPersonDto.getMobilePhoneNumber(),
                 createContactPersonDto.getPhoneNumber(),
                 createContactPersonDto.getEmail(),
-                addressMapper.toAddress(createContactPersonDto.getCreateAddressDto())
+                addressMapper.toAddress(createContactPersonDto.getAddress())
         );
     }
 
