@@ -39,6 +39,35 @@ VALUES (nextval('member_seq'),
         1,
         TO_TIMESTAMP('1990-05-01', 'YYYY-MM-DD'));
 
+insert into contact_person(id,
+                           first_name,
+                           last_name,
+                           mobile_phone_number,
+                           telephone_number,
+                           email,
+                           fk_address_id)
+values (nextval('contact_person_seq'),
+        'Albus',
+        'Dumbledore',
+        '025412',
+        '212404',
+        'albus.dumbledore@hogwarts.uk',
+        1);
+
+insert into parking_lot(id,
+                 category,
+                 name,
+                 capacity,
+                 fk_contact_person_id,
+                 fk_address_id)
+values (nextval('parking_lot_seq'),
+        'UNDERGROUND_BUILDING',
+        'Parkshark',
+        80,
+        1,
+        1);
+
+
 INSERT INTO contact_person(
                            id, first_name, last_name, mobile_phone_number, telephone_number, email, fk_address_id
 )
