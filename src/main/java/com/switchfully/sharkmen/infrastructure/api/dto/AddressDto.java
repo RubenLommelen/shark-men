@@ -5,12 +5,12 @@ import java.util.Objects;
 public class AddressDto {
     private final String streetName;
     private final String streetNumber;
-    private final PostalCodeDto postalCodeDto;
+    private final PostalCodeDto postalCode;
 
-    public AddressDto(String streetName, String streetNumber, PostalCodeDto postalCodeDto) {
+    public AddressDto(String streetName, String streetNumber, PostalCodeDto postalCode) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
-        this.postalCodeDto = postalCodeDto;
+        this.postalCode = postalCode;
     }
 
     public String getStreetName() {
@@ -21,8 +21,8 @@ public class AddressDto {
         return streetNumber;
     }
 
-    public PostalCodeDto getPostalCodeDto() {
-        return postalCodeDto;
+    public PostalCodeDto getPostalCode() {
+        return postalCode;
     }
 
     @Override
@@ -30,11 +30,11 @@ public class AddressDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddressDto that = (AddressDto) o;
-        return Objects.equals(streetName, that.streetName) && Objects.equals(streetNumber, that.streetNumber) && Objects.equals(postalCodeDto, that.postalCodeDto);
+        return Objects.equals(streetName, that.streetName) && Objects.equals(streetNumber, that.streetNumber) && Objects.equals(postalCode, that.postalCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(streetName, streetNumber, postalCodeDto);
+        return Objects.hash(streetName, streetNumber, postalCode);
     }
 }
