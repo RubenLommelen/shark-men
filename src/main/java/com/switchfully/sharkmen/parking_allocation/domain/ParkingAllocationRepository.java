@@ -4,9 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ParkingAllocationRepository {
+public interface ParkingAllocationRepository extends JpaRepository<ParkingAllocation,Long>{
 
 
-    public void save(ParkingAllocation parkingAllocation) {
-    }
+
 }

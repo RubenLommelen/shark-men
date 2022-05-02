@@ -66,3 +66,5 @@ values (nextval('parking_lot_seq'),
         80,
         1,
         1);
+
+
