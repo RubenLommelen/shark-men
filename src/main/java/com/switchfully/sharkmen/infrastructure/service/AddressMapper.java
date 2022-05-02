@@ -28,7 +28,7 @@ public class AddressMapper {
     }
 
     public Address toAddress(CreateAddressDto createAddressDto) {
-        addressMapperLogger.info("AddressDto conversion to Address");
+        addressMapperLogger.info("CreateAddressDto conversion to Address");
         return new Address(
                 createAddressDto.getStreetName(),
                 createAddressDto.getStreetNumber(),

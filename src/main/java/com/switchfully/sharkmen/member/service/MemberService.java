@@ -26,8 +26,9 @@ public class MemberService {
 
     public MemberDto registerMember(CreateMemberDto createMemberDto) {
         Member memberToRegister = memberMapper.ToMember(createMemberDto);
+        memberServiceLogger.info("saving memberToRegister in database");
         memberRepository.save(memberToRegister);
-        memberServiceLogger.info("Registering a member" + memberToRegister.getFirstName());
+        memberServiceLogger.info("Registering a member " + memberToRegister.getFirstName() + " " + memberToRegister.getLastName());
         return memberMapper.ToDto(memberToRegister);
     }
 

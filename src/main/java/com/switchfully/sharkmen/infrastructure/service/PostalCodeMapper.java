@@ -18,12 +18,12 @@ public class PostalCodeMapper {
     }
 
     public PostalCode toPostalCode (CreatePostalCodeDto postalCodeDto){
-        postalCodeMapperLogger.info("PostalCodeDto conversion to PostalCode");
+        postalCodeMapperLogger.info("CreatePostalCodeDto conversion to PostalCode");
         return new PostalCode(postalCodeDto.getZipcode(), postalCodeDto.getCity());
     }
 
     public PostalCodeDto toDto (PostalCode postalCode){
-        postalCodeMapperLogger.info("PostalCodeDto conversion to PostalCode");
+        postalCodeMapperLogger.info("PostalCode conversion to PostalCodeDto");
         return new PostalCodeDto(postalCode.getZipcode(), postalCode.getCity());
     }
 }

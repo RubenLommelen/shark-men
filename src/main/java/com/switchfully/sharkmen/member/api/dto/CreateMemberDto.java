@@ -18,7 +18,7 @@ public class CreateMemberDto {
     private final CreateAddressDto address;
     @NotBlank(message = "PhoneNumber is blank or null")
     private final String phoneNumber;
-    @Email(regexp = "^(\\S+)@(\\S+)\\.([a-zA-Z]+)$", message = "email is not in the right format")
+    @Email(regexp = "^(\\S+)@(\\S+)\\.([a-zA-Z]+)$", message = "email is not in the right format. Please provide a correct E-mail address ")
     private final String emailAddress;
     @Valid
     @NotNull(message = "LicensePlate is null or blank")
