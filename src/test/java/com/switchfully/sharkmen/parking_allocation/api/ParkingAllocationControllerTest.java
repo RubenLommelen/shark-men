@@ -65,4 +65,24 @@ class ParkingAllocationControllerTest {
                 .assertThat()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
     }
+
+    @Test
+    void startAllocation_whenIncorrectLicensePlate_getBadRequest() {
+        CreateParkingAllocationDto createParkingAllocationDto = new CreateParkingAllocationDto(
+                1L,
+                "YABBADABBADOO",
+                1L
+        );
+
+        given()
+                .baseUri("http://localhost")
+                .port(port)
+                .when()
+                .body(createParkingAllocationDto)
+                .contentType(JSON)
+                .post("/allocations")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+    }
 }

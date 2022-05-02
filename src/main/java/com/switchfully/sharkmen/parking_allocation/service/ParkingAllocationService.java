@@ -7,12 +7,13 @@ import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocati
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationResultDto;
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocation;
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocationRepository;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -30,9 +31,20 @@ public class ParkingAllocationService {
 
     public CreateParkingAllocationResultDto startAllocation(CreateParkingAllocationDto createParkingAllocationDto) {
         assertMemberIdExists(createParkingAllocationDto.getMemberId());
+        assertLicensePlateIsCorrect(createParkingAllocationDto.getLicensePlateNumber(), createParkingAllocationDto.getMemberId());
+
         ParkingAllocation parkingAllocation = parkingAllocationMapper.toParkingAllocation(createParkingAllocationDto);
         parkingAllocationRepository.save(parkingAllocation);
         return parkingAllocationMapper.toDto(parkingAllocation);
+    }
+
+    private void assertLicensePlateIsCorrect(String licensePlateNumber, Long memberId) {
+        List<Member> foundMembers = memberRepository.findByLicensePlateLicensePlateNumber(licensePlateNumber);
+        if (foundMembers.stream()
+                .map(Member::getMemberId)
+                .noneMatch(number -> Objects.equals(number, memberId))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "License plate number is not registered to the member with id " + memberId);
+        }
     }
 
     private void assertMemberIdExists(Long memberId) {
