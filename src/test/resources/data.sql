@@ -29,7 +29,8 @@ INSERT INTO member(id,
                    phone_number,
                    email_address,
                    fk_license_plate_id,
-                   registration_date)
+                   registration_date,
+                   membership_level)
 VALUES (nextval('member_seq'),
         'Ron',
         'Weasley',
@@ -37,7 +38,8 @@ VALUES (nextval('member_seq'),
         '123456789',
         'RonWeasley@hogwarts.com',
         1,
-        TO_TIMESTAMP('1990-05-01', 'YYYY-MM-DD'));
+        TO_TIMESTAMP('1990-05-01', 'YYYY-MM-DD'),
+        'BRONZE');
 
 insert into contact_person(id,
                            first_name,

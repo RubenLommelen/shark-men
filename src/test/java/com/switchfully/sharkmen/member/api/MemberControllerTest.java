@@ -40,7 +40,7 @@ class MemberControllerTest {
 
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
                 , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
-                "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto("1515", "UK"), null);
+                "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto("1515", "UK"), MembershipLevel.BRONZE);
         MemberDto expectedMemberDto = memberMapper.ToDto(memberMapper.ToMember(expectedCreateMemberDto));
         //  WHEN
         MemberDto actualMemberDto = RestAssured
@@ -96,7 +96,7 @@ class MemberControllerTest {
             //  GIVEN
             CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
                     , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
-                    "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto("1515", "UK"), null);
+                    "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto("1515", "UK"), MembershipLevel.BRONZE);
             MemberDto expectedMemberDto = memberMapper.ToDto(memberMapper.ToMember(expectedCreateMemberDto));
             //  WHEN
             MemberDto actualMemberDto = RestAssured

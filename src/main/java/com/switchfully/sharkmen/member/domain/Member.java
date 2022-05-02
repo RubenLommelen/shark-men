@@ -32,7 +32,8 @@ public class Member {
     private LicensePlate licensePlate;
     @Column(name = "REGISTRATION_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime registrationDate;
-    @Transient
+    @Column(name = "membership_level")
+    @Enumerated(EnumType.STRING)
     private MembershipLevel membershipLevel;
 
     public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate, MembershipLevel membershipLevel) {
