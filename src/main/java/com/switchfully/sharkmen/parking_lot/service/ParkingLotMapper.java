@@ -1,14 +1,14 @@
-package com.switchfully.sharkmen.parkinglot.service;
+package com.switchfully.sharkmen.parking_lot.service;
 
 import com.switchfully.sharkmen.contact_person.service.ContactPersonMapper;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;
-import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
+import com.switchfully.sharkmen.parking_lot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parking_lot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parking_lot.api.dto.ParkingLotOverviewDto;
+import com.switchfully.sharkmen.parking_lot.domain.ParkingLot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
+import com.switchfully.sharkmen.parking_lot.domain.ParkingLotRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

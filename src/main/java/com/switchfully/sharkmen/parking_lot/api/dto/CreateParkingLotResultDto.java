@@ -1,4 +1,4 @@
-package com.switchfully.sharkmen.parkinglot.api.dto;
+package com.switchfully.sharkmen.parking_lot.api.dto;
 
 public class CreateParkingLotResultDto {
 
