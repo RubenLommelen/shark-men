@@ -10,9 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "MEMBER")
 public class Member {
-    //@Transient
-    //private final Logger memberLogger = LoggerFactory.getLogger(Member.class);
-//
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
@@ -34,8 +32,10 @@ public class Member {
     private LicensePlate licensePlate;
     @Column(name = "REGISTRATION_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime registrationDate;
+    @Transient
+    private MembershipLevel membershipLevel;
 
-    public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
+    public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate, MembershipLevel membershipLevel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -43,11 +43,11 @@ public class Member {
         this.emailAddress = emailAddress;
         this.licensePlate = licensePlate;
         this.registrationDate = OffsetDateTime.now();
+        this.membershipLevel = membershipLevel;
     }
 
     public Member() {
     }
-
 
     public Long getMemberId() {
         return memberId;
@@ -79,6 +79,10 @@ public class Member {
 
     public OffsetDateTime getRegistrationDate() {
         return registrationDate;
+    }
+
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
     }
 
     @Override
