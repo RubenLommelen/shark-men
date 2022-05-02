@@ -1,6 +1,5 @@
 package com.switchfully.sharkmen.infrastructure.exceptions;
 
-import com.switchfully.sharkmen.member.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;

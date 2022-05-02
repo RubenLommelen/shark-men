@@ -1,9 +1,8 @@
 package com.switchfully.sharkmen.contact_person.service;
 
-import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
-import com.switchfully.sharkmen.contact_person.domain.ContactPerson;
-import com.switchfully.sharkmen.contact_person.api.dto.ContactPersonDto;
 import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
+import com.switchfully.sharkmen.contact_person.domain.ContactPerson;
+import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,18 +22,6 @@ public class ContactPersonMapper {
                 createContactPersonDto.getPhoneNumber(),
                 createContactPersonDto.getEmail(),
                 addressMapper.toAddress(createContactPersonDto.getAddress())
-        );
-    }
-
-    public ContactPersonDto toDto(ContactPerson contactPerson) {
-        return new ContactPersonDto(
-                contactPerson.getId(),
-                contactPerson.getFirstName(),
-                contactPerson.getLastName(),
-                contactPerson.getMobilePhoneNumber(),
-                contactPerson.getPhoneNumber(),
-                contactPerson.getEmail(),
-                addressMapper.toDto(contactPerson.getAddress())
         );
     }
 }

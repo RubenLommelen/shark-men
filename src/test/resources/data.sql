@@ -68,3 +68,32 @@ values (nextval('parking_lot_seq'),
         1);
 
 
+INSERT INTO contact_person(
+                           id, first_name, last_name, mobile_phone_number, telephone_number, email, fk_address_id
+)
+VALUES (
+        nextval('contact_person_seq'),
+        'Albus',
+        'Dumbledore',
+        '123',
+        '22',
+        'albus@hogwarts.uk',
+        1
+       );
+
+INSERT INTO parking_lot(
+                        id,
+                        category,
+                        name,
+                        capacity,
+                        fk_contact_person_id,
+                        fk_address_id
+)
+VALUES (
+        nextval('parking_lot_seq'),
+        'UNDERGROUND_BUILDING',
+        'Hogwarts Parking Space',
+        20,
+        currval('contact_person_seq'),
+        1
+       );

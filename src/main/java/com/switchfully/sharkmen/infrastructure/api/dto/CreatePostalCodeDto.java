@@ -1,7 +1,6 @@
 package com.switchfully.sharkmen.infrastructure.api.dto;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class CreatePostalCodeDto {
     @NotBlank(message = "zipcode is blank or null")
