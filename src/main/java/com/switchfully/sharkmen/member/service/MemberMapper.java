@@ -37,7 +37,7 @@ public class MemberMapper {
     }
 
     public Member ToMember(CreateMemberDto createMemberDto) {
-        memberMapperLogger.info("MemberDto conversion to Member");
+        memberMapperLogger.info("CreateMemberDto conversion to Member");
         return new Member(
                 createMemberDto.getFirstName(),
                 createMemberDto.getLastName(),
