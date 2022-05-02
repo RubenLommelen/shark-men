@@ -44,4 +44,24 @@ class ParkingAllocationControllerTest {
 
         Assertions.assertThat(result.getId()).isNotNull();
     }
+
+    @Test
+    void startAllocation_whenNonExistingMemberId_getBadRequest() {
+        CreateParkingAllocationDto createParkingAllocationDto = new CreateParkingAllocationDto(
+                3000000L,
+                "JA21HJH",
+                1L
+        );
+
+        given()
+                .baseUri("http://localhost")
+                .port(port)
+                .when()
+                .body(createParkingAllocationDto)
+                .contentType(JSON)
+                .post("/allocations")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+    }
 }
