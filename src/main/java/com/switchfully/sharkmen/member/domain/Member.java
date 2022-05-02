@@ -90,22 +90,26 @@ public class Member {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Member member = (Member) o;
-        return Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate);
+        return Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate) && membershipLevel == member.membershipLevel;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, address, phoneNumber, emailAddress, licensePlate);
+        return Objects.hash(firstName, lastName, address, phoneNumber, emailAddress, licensePlate, membershipLevel);
     }
 
     @Override
     public String toString() {
         return "Member{" +
-                "firstName='" + firstName + '\'' +
+                "memberId=" + memberId +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", address=" + address +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
                 ", licensePlate=" + licensePlate +
+                ", registrationDate=" + registrationDate +
+                ", membershipLevel=" + membershipLevel +
                 '}';
     }
 }
