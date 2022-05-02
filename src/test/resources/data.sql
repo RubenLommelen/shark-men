@@ -97,3 +97,18 @@ VALUES (
         currval('contact_person_seq'),
         1
        );
+
+INSERT INTO parking_allocation(
+                               id,
+                               fk_member_id,
+                               license_plate_number,
+                               fk_parking_lot_id,
+                               start_time
+)
+VALUES (
+        nextval('parking_allocation_seq'),
+        1,
+        'JA21HJH',
+        1,
+        TO_TIMESTAMP('1990-05-01', 'YYYY-MM-DD')
+        );

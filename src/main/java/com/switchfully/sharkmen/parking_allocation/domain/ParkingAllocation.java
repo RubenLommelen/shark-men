@@ -5,6 +5,8 @@ import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.Objects;
+
 @Entity
 @Table(name = "parking_allocation")
 public class ParkingAllocation {
@@ -48,5 +50,16 @@ public class ParkingAllocation {
         return parkingLot;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingAllocation that = (ParkingAllocation) o;
+        return Objects.equals(member, that.member) && Objects.equals(licensePlateNumber, that.licensePlateNumber) && Objects.equals(parkingLot, that.parkingLot);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(member, licensePlateNumber, parkingLot);
+    }
 }
