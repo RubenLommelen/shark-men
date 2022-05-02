@@ -3,7 +3,6 @@ package com.switchfully.sharkmen.member.license_plate.service;
 import com.switchfully.sharkmen.member.license_plate.api.dto.CreateLicensePlateDto;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
 import com.switchfully.sharkmen.member.license_plate.domain.LicensePlate;
-import com.switchfully.sharkmen.member.service.MemberMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,12 +1,8 @@
 package com.switchfully.sharkmen.parkinglot;
 
-import com.switchfully.sharkmen.contact_person.api.dto.ContactPersonDto;
 import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
-import com.switchfully.sharkmen.contact_person.domain.ContactPerson;
-import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
-import com.switchfully.sharkmen.infrastructure.api.dto.PostalCodeDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;

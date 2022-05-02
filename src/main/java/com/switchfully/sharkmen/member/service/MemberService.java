@@ -1,6 +1,5 @@
 package com.switchfully.sharkmen.member.service;
 
-import com.switchfully.sharkmen.infrastructure.exceptions.IllegalFormatForEmailException;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
 import com.switchfully.sharkmen.member.domain.Member;
@@ -8,8 +7,6 @@ import com.switchfully.sharkmen.member.domain.MemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.regex.Pattern;
 
 @Service
 public class MemberService {
