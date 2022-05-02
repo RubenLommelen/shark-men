@@ -1,7 +1,7 @@
 package com.switchfully.sharkmen.parking_allocation.domain;
 
 import com.switchfully.sharkmen.member.domain.Member;
-import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
+import com.switchfully.sharkmen.parking_lot.domain.ParkingLot;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;

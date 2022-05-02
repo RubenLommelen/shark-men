@@ -1,15 +1,15 @@
-package com.switchfully.sharkmen.parkinglot;
+package com.switchfully.sharkmen.parking_lot;
 
 import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;
-import com.switchfully.sharkmen.parkinglot.domain.Category;
-import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
-import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
-import com.switchfully.sharkmen.parkinglot.service.ParkingLotMapper;
+import com.switchfully.sharkmen.parking_lot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parking_lot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parking_lot.api.dto.ParkingLotOverviewDto;
+import com.switchfully.sharkmen.parking_lot.domain.Category;
+import com.switchfully.sharkmen.parking_lot.domain.ParkingLot;
+import com.switchfully.sharkmen.parking_lot.domain.ParkingLotRepository;
+import com.switchfully.sharkmen.parking_lot.service.ParkingLotMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

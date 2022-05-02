@@ -10,9 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "MEMBER")
 public class Member {
-    //@Transient
-    //private final Logger memberLogger = LoggerFactory.getLogger(Member.class);
-//
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
@@ -34,8 +32,11 @@ public class Member {
     private LicensePlate licensePlate;
     @Column(name = "REGISTRATION_DATE", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime registrationDate;
+    @Column(name = "membership_level")
+    @Enumerated(EnumType.STRING)
+    private MembershipLevel membershipLevel;
 
-    public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate) {
+    public Member(String firstName, String lastName, Address address, String phoneNumber, String emailAddress, LicensePlate licensePlate, MembershipLevel membershipLevel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -43,11 +44,11 @@ public class Member {
         this.emailAddress = emailAddress;
         this.licensePlate = licensePlate;
         this.registrationDate = OffsetDateTime.now();
+        this.membershipLevel = membershipLevel;
     }
 
     public Member() {
     }
-
 
     public Long getMemberId() {
         return memberId;
@@ -81,27 +82,35 @@ public class Member {
         return registrationDate;
     }
 
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Member member = (Member) o;
-        return Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate);
+        return Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(address, member.address) && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(emailAddress, member.emailAddress) && Objects.equals(licensePlate, member.licensePlate) && membershipLevel == member.membershipLevel;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, address, phoneNumber, emailAddress, licensePlate);
+        return Objects.hash(firstName, lastName, address, phoneNumber, emailAddress, licensePlate, membershipLevel);
     }
 
     @Override
     public String toString() {
         return "Member{" +
-                "firstName='" + firstName + '\'' +
+                "memberId=" + memberId +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", address=" + address +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
                 ", licensePlate=" + licensePlate +
+                ", registrationDate=" + registrationDate +
+                ", membershipLevel=" + membershipLevel +
                 '}';
     }
 }

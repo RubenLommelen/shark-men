@@ -1,6 +1,7 @@
 package com.switchfully.sharkmen.member.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
+import com.switchfully.sharkmen.member.domain.MembershipLevel;
 import com.switchfully.sharkmen.member.license_plate.api.dto.LicensePlateDto;
 
 import java.time.OffsetDateTime;
@@ -14,8 +15,9 @@ public class MemberDto {
     private final String emailAddress;
     private final LicensePlateDto licensePlate;
     private final OffsetDateTime registrationDate;
+    private final MembershipLevel membershipLevel;
 
-    public MemberDto(Long memberId, String firstName, String lastName, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, OffsetDateTime registrationDate) {
+    public MemberDto(Long memberId, String firstName, String lastName, AddressDto address, String phoneNumber, String emailAddress, LicensePlateDto licensePlate, OffsetDateTime registrationDate, MembershipLevel membershipLevel) {
         this.memberId = memberId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,6 +26,7 @@ public class MemberDto {
         this.emailAddress = emailAddress;
         this.licensePlate = licensePlate;
         this.registrationDate = registrationDate;
+        this.membershipLevel = membershipLevel;
     }
 
     public String getFirstName() {
@@ -48,6 +51,10 @@ public class MemberDto {
 
     public LicensePlateDto getLicensePlate() {
         return licensePlate;
+    }
+
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
     }
 
     public OffsetDateTime getRegistrationDate() {

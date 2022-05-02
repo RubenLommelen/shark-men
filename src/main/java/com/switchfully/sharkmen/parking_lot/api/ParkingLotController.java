@@ -1,9 +1,9 @@
-package com.switchfully.sharkmen.parkinglot.api;
+package com.switchfully.sharkmen.parking_lot.api;
 
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.ParkingLotOverviewDto;
-import com.switchfully.sharkmen.parkinglot.service.ParkingLotService;
+import com.switchfully.sharkmen.parking_lot.api.dto.CreateParkingLotDto;
+import com.switchfully.sharkmen.parking_lot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parking_lot.api.dto.ParkingLotOverviewDto;
+import com.switchfully.sharkmen.parking_lot.service.ParkingLotService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

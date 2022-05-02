@@ -28,7 +28,8 @@ class MemberRepositoryTest {
                         "123456789",
                         "RonWeasley@hogwarts.com",
                         new LicensePlate("JA21HJH",
-                                "UK"))));
+                                "UK"),
+                        MembershipLevel.BRONZE)));
 
         List<Member> actualMemberList = memberRepository.findAll();
 

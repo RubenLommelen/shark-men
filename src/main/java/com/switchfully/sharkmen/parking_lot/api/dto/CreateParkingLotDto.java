@@ -1,8 +1,8 @@
-package com.switchfully.sharkmen.parkinglot.api.dto;
+package com.switchfully.sharkmen.parking_lot.api.dto;
 
 import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
-import com.switchfully.sharkmen.parkinglot.domain.Category;
+import com.switchfully.sharkmen.parking_lot.domain.Category;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;

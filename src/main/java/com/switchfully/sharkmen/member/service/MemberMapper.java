@@ -40,7 +40,8 @@ public class MemberMapper {
                 member.getPhoneNumber(),
                 member.getEmailAddress(),
                 licensePlateMapper.toDto(member.getLicensePlate()),
-                member.getRegistrationDate());
+                member.getRegistrationDate(),
+                member.getMembershipLevel());
     }
 
     public Member ToMember(CreateMemberDto createMemberDto) {
@@ -51,7 +52,8 @@ public class MemberMapper {
                 addressMapper.toAddress(createMemberDto.getAddress()),
                 createMemberDto.getPhoneNumber(),
                 createMemberDto.getEmailAddress(),
-                licensePlateMapper.toLicensePlate(createMemberDto.getLicensePlate()));
+                licensePlateMapper.toLicensePlate(createMemberDto.getLicensePlate()),
+                createMemberDto.getMembershipLevel());
 
     }
 

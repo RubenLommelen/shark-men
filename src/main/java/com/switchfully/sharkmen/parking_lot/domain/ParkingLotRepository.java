@@ -1,4 +1,4 @@
-package com.switchfully.sharkmen.parkinglot.domain;
+package com.switchfully.sharkmen.parking_lot.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

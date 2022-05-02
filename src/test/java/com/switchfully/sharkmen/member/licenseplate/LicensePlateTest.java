@@ -30,7 +30,7 @@ public class LicensePlateTest {
         //  GIVEN
         CreateMemberDto expectedCreateMemberDto = new CreateMemberDto("Harry ", "Potter"
                 , new CreateAddressDto("Privet drive", "4", new CreatePostalCodeDto("WD25", "Watfort")),
-                "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto(null, "UK"));
+                "0475080808", "HarryPotter@Hogwarts.uk", new CreateLicensePlateDto(null, "UK"), null);
 //  WHEN
         RestAssured
                 .given()

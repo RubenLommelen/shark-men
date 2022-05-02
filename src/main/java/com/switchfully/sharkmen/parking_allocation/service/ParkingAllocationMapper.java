@@ -4,7 +4,7 @@ import com.switchfully.sharkmen.member.service.MemberMapper;
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationDto;
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationResultDto;
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocation;
-import com.switchfully.sharkmen.parkinglot.service.ParkingLotMapper;
+import com.switchfully.sharkmen.parking_lot.service.ParkingLotMapper;
 import org.springframework.stereotype.Component;
 
 @Component
