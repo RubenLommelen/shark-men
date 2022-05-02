@@ -1,10 +1,9 @@
-package com.switchfully.sharkmen.parkinglot.service;
+package com.switchfully.sharkmen.contact_person.service;
 
-import com.switchfully.sharkmen.infrastructure.domain.Address;
 import com.switchfully.sharkmen.infrastructure.service.AddressMapper;
-import com.switchfully.sharkmen.parkinglot.ContactPerson;
-import com.switchfully.sharkmen.parkinglot.api.dto.ContactPersonDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateContactPersonDto;
+import com.switchfully.sharkmen.contact_person.domain.ContactPerson;
+import com.switchfully.sharkmen.contact_person.api.dto.ContactPersonDto;
+import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
 import org.springframework.stereotype.Component;
 
 @Component

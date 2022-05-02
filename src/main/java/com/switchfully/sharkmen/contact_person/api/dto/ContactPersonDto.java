@@ -1,4 +1,4 @@
-package com.switchfully.sharkmen.parkinglot.api.dto;
+package com.switchfully.sharkmen.contact_person.api.dto;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
 

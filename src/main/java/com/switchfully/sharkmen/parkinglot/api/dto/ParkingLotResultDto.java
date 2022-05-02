@@ -1,7 +1,8 @@
 package com.switchfully.sharkmen.parkinglot.api.dto;
 
+import com.switchfully.sharkmen.contact_person.api.dto.ContactPersonDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.AddressDto;
-import com.switchfully.sharkmen.parkinglot.Category;
+import com.switchfully.sharkmen.parkinglot.domain.Category;
 
 public class ParkingLotResultDto {
     private final Long id;

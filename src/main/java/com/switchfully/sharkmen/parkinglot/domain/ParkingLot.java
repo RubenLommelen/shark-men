@@ -1,8 +1,7 @@
 package com.switchfully.sharkmen.parkinglot.domain;
 
+import com.switchfully.sharkmen.contact_person.domain.ContactPerson;
 import com.switchfully.sharkmen.infrastructure.domain.Address;
-import com.switchfully.sharkmen.parkinglot.Category;
-import com.switchfully.sharkmen.parkinglot.ContactPerson;
 
 import javax.persistence.*;
 import java.util.Objects;

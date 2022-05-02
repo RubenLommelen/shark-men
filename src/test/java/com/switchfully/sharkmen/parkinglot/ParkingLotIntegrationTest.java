@@ -2,9 +2,10 @@ package com.switchfully.sharkmen.parkinglot;
 
 import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
-import com.switchfully.sharkmen.parkinglot.api.dto.CreateContactPersonDto;
+import com.switchfully.sharkmen.contact_person.api.dto.CreateContactPersonDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotDto;
 import com.switchfully.sharkmen.parkinglot.api.dto.CreateParkingLotResultDto;
+import com.switchfully.sharkmen.parkinglot.domain.Category;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLot;
 import com.switchfully.sharkmen.parkinglot.domain.ParkingLotRepository;
 import com.switchfully.sharkmen.parkinglot.service.ParkingLotMapper;
@@ -16,8 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.annotation.DirtiesContext;
-
-import java.util.Optional;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
