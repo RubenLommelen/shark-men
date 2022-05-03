@@ -50,14 +50,7 @@ public class ParkingLotMapper {
     }
 
     public ParkingLotOverviewDto toParkingLotOverviewDto(ParkingLot parkingLot) {
-        String phoneNumber;
-        if (!parkingLot.getContactPerson().getMobilePhoneNumber().isBlank()) {
-            phoneNumber = parkingLot.getContactPerson().getMobilePhoneNumber();
-            parkingLotMapperLogger.info("Selected mobile phone number");
-        } else {
-            phoneNumber = parkingLot.getContactPerson().getPhoneNumber();
-            parkingLotMapperLogger.info("Selected home phone number");
-        }
+        String phoneNumber = SelectPhoneNumber(parkingLot);
         return new ParkingLotOverviewDto(
                 parkingLot.getId(),
                 parkingLot.getName(),
@@ -71,5 +64,17 @@ public class ParkingLotMapper {
         return parkingLotList.stream()
                 .map(parkingLot -> toParkingLotOverviewDto(parkingLot))
                 .toList();
+    }
+
+    private String SelectPhoneNumber(ParkingLot parkingLot) {
+        String phoneNumber;
+        if (parkingLot.getContactPerson().getMobilePhoneNumber() != null && !parkingLot.getContactPerson().getMobilePhoneNumber().isBlank()) {
+            phoneNumber = parkingLot.getContactPerson().getMobilePhoneNumber();
+            parkingLotMapperLogger.info("Selected mobile phone number");
+        } else {
+            phoneNumber = parkingLot.getContactPerson().getPhoneNumber();
+            parkingLotMapperLogger.info("Selected home phone number");
+        }
+        return phoneNumber;
     }
 }
