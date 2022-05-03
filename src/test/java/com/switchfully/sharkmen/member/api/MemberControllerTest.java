@@ -4,6 +4,7 @@ import com.switchfully.sharkmen.infrastructure.api.dto.CreateAddressDto;
 import com.switchfully.sharkmen.infrastructure.api.dto.CreatePostalCodeDto;
 import com.switchfully.sharkmen.member.api.dto.CreateMemberDto;
 import com.switchfully.sharkmen.member.api.dto.MemberDto;
+import com.switchfully.sharkmen.member.domain.MemberRepository;
 import com.switchfully.sharkmen.member.domain.MembershipLevel;
 import com.switchfully.sharkmen.member.license_plate.api.dto.CreateLicensePlateDto;
 import com.switchfully.sharkmen.member.service.MemberMapper;
@@ -32,6 +33,9 @@ class MemberControllerTest {
 
     @Autowired
     private MemberMapper memberMapper;
+
+    @Autowired
+    private MemberRepository memberRepository;
 
 
     @Test
@@ -64,6 +68,8 @@ class MemberControllerTest {
         Assertions.assertThat(actualMemberDto.getPhoneNumber()).isEqualTo(expectedMemberDto.getPhoneNumber());
         Assertions.assertThat(actualMemberDto.getEmailAddress()).isEqualTo(expectedMemberDto.getEmailAddress());
         Assertions.assertThat(actualMemberDto.getLicensePlate()).isEqualTo(expectedMemberDto.getLicensePlate());
+
+        Assertions.assertThat(memberRepository.existsById(actualMemberDto.getMemberId())).isTrue();
 
     }
 
