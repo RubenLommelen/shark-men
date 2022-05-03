@@ -14,7 +14,7 @@ public class CreateParkingLotDto {
     private final String name;
     @NotNull(message = "category is blank or null")
     private final Category category;
-    @Positive
+    @Positive(message = "capacity needs to be greater than 0")
     @NotNull(message = "capacity is null")
     private final int capacity;
     @Valid
