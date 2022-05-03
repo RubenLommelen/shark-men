@@ -9,6 +9,8 @@ import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocati
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocation;
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocationRepository;
 import com.switchfully.sharkmen.parking_lot.domain.ParkingLotRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,10 +19,12 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 
+
 @Service
 @Transactional
 public class ParkingAllocationService {
 
+    private final Logger parkingAllocationServiceLogger = LoggerFactory.getLogger(ParkingAllocationService.class);
     private final ParkingAllocationRepository parkingAllocationRepository;
     private final MemberRepository memberRepository;
     private final ParkingLotRepository parkingLotRepository;
@@ -34,22 +38,25 @@ public class ParkingAllocationService {
     }
 
     public CreateParkingAllocationResultDto startAllocation(CreateParkingAllocationDto createParkingAllocationDto) {
-        assertMemberIdExists(createParkingAllocationDto.getMemberId());
-        assertLicensePlateIsCorrect(createParkingAllocationDto.getLicensePlateNumber(), createParkingAllocationDto.getMemberId());
-        assertParkingLotIdExists(createParkingAllocationDto.getParkingLotId());
+        parkingAllocationServiceLogger.info("Started creating parking allocation");
+        checkIfMemberIdExists(createParkingAllocationDto.getMemberId());
+        checkIfLicensePlateIsCorrect(createParkingAllocationDto.getLicensePlateNumber(), createParkingAllocationDto.getMemberId());
+        checkIfParkingLotIdExists(createParkingAllocationDto.getParkingLotId());
 
         ParkingAllocation parkingAllocation = parkingAllocationMapper.toParkingAllocation(createParkingAllocationDto);
+        parkingAllocationServiceLogger.info("Saving allocation to database");
         parkingAllocationRepository.save(parkingAllocation);
+        parkingAllocationServiceLogger.info("Successfully created parking allocation with id " + parkingAllocation.getId());
         return parkingAllocationMapper.toDto(parkingAllocation);
     }
 
-    private void assertMemberIdExists(Long memberId) {
+    private void checkIfMemberIdExists(Long memberId) {
         if (!memberRepository.existsById(memberId)) {
             throw new NotFoundException("no member found for id " + memberId);
         }
     }
 
-    private void assertLicensePlateIsCorrect(String licensePlateNumber, Long memberId) {
+    private void checkIfLicensePlateIsCorrect(String licensePlateNumber, Long memberId) {
         if (memberRepository.getById(memberId).getMembershipLevel() == MembershipLevel.GOLD) {
             return;
         }
@@ -61,7 +68,7 @@ public class ParkingAllocationService {
         }
     }
 
-    private void assertParkingLotIdExists(Long parkingLotId) {
+    private void checkIfParkingLotIdExists(Long parkingLotId) {
         if (!parkingLotRepository.existsById(parkingLotId)) {
             throw new NotFoundException("no parking lot found for id " + parkingLotId);
         }
