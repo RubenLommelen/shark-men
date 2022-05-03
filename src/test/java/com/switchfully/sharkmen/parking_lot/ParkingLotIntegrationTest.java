@@ -23,7 +23,6 @@ import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 

@@ -6,6 +6,8 @@ import com.switchfully.sharkmen.parking_allocation.service.ParkingAllocationServ
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("allocations")
 public class ParkingAllocationController {
@@ -18,7 +20,7 @@ public class ParkingAllocationController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateParkingAllocationResultDto startAllocation(@RequestBody CreateParkingAllocationDto createParkingAllocationDto) {
+    public CreateParkingAllocationResultDto startAllocation(@Valid @RequestBody CreateParkingAllocationDto createParkingAllocationDto) {
         return parkingAllocationService.startAllocation(createParkingAllocationDto);
     }
 }
