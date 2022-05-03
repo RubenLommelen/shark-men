@@ -70,8 +70,4 @@ public class CreateMemberDto {
     public MembershipLevel getMembershipLevel() {
         return membershipLevel;
     }
-
-    protected void setMembershipLevel(MembershipLevel membershipLevel) {
-        this.membershipLevel = membershipLevel;
-    }
 }
