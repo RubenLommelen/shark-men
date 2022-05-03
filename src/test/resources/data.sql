@@ -114,3 +114,22 @@ VALUES (
         1,
         TO_TIMESTAMP('1990-05-01', 'YYYY-MM-DD')
         );
+
+INSERT INTO member(id,
+                   firstname,
+                   lastname,
+                   fk_address_id,
+                   phone_number,
+                   email_address,
+                   fk_license_plate_id,
+                   registration_date,
+                   membership_level)
+VALUES (nextval('member_seq'),
+        'Harry',
+        'Potter',
+        1,
+        '123456789',
+        'HarryPotter@hogwarts.com',
+        1,
+        TO_TIMESTAMP('1990-05-02', 'YYYY-MM-DD'),
+        'GOLD');

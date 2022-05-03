@@ -3,6 +3,7 @@ package com.switchfully.sharkmen.parking_allocation.service;
 import com.switchfully.sharkmen.infrastructure.exceptions.MemberNotFoundException;
 import com.switchfully.sharkmen.member.domain.Member;
 import com.switchfully.sharkmen.member.domain.MemberRepository;
+import com.switchfully.sharkmen.member.domain.MembershipLevel;
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationDto;
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationResultDto;
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocation;
@@ -39,6 +40,9 @@ public class ParkingAllocationService {
     }
 
     private void assertLicensePlateIsCorrect(String licensePlateNumber, Long memberId) {
+        if (memberRepository.getById(memberId).getMembershipLevel() == MembershipLevel.GOLD) {
+            return;
+        }
         List<Member> foundMembers = memberRepository.findByLicensePlateLicensePlateNumber(licensePlateNumber);
         if (foundMembers.stream()
                 .map(Member::getMemberId)

@@ -85,4 +85,28 @@ class ParkingAllocationControllerTest {
                 .assertThat()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
     }
+
+    @Test
+    void startAllocation_whenGoldMemberHasIncorrectLicensePlate_parkingAllocationCreatedSuccessfully() {
+        CreateParkingAllocationDto createParkingAllocationDto = new CreateParkingAllocationDto(
+                2L,
+                "YABBADABBADOO",
+                1L
+        );
+
+        CreateParkingAllocationResultDto result = given()
+                .baseUri("http://localhost")
+                .port(port)
+                .when()
+                .body(createParkingAllocationDto)
+                .contentType(JSON)
+                .post("/allocations")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.CREATED.value())
+                .extract()
+                .as(CreateParkingAllocationResultDto.class);
+
+        Assertions.assertThat(result.getId()).isNotNull();
+    }
 }
