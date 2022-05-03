@@ -21,7 +21,7 @@ public class DivisionService {
         this.divisionRepository = divisionRepository;
     }
 
-    public DivisionDto createDivision(CreateDivisionDto createDivisionDto){
+    public DivisionDto createDivision(CreateDivisionDto createDivisionDto) {
         logger.info("Started creating a division");
         Division divisionToSave = divisionMapper.toDivision(createDivisionDto);
         logger.info("Saving division to database");

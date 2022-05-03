@@ -13,7 +13,6 @@ public class LicensePlateMapper {
     private final Logger licensePlateMapperLogger = LoggerFactory.getLogger(LicensePlateMapper.class);
 
 
-
     public LicensePlate toLicensePlate(CreateLicensePlateDto createLicensePlateDto) {
         licensePlateMapperLogger.info("CreateLicensePlateDto conversion to LicensePlate");
         return new LicensePlate(createLicensePlateDto.getLicensePlateNumber(), createLicensePlateDto.getCountry());

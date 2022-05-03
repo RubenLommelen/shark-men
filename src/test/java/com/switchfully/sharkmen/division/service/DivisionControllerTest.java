@@ -30,7 +30,7 @@ class DivisionControllerTest {
     @Test
     void givenNameOriginalNameAndDirectorName_WhenCreateDivision_ThenReturnDivision() {
         //  GIVEN
-        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("Hogwarts","The four wizards school", "Hagrid");
+        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("Hogwarts", "The four wizards school", "Hagrid");
         //  WHEN
         DivisionDto actualDivisionDto = RestAssured
                 .given()
@@ -57,7 +57,7 @@ class DivisionControllerTest {
     @Test
     void givenBlankName_WhenCreateDivision_ThenBadRequest() {
         //  GIVEN
-        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("   ","The four wizards school", "Hagrid");
+        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("   ", "The four wizards school", "Hagrid");
         //  WHEN
         RestAssured
                 .given()
@@ -77,7 +77,7 @@ class DivisionControllerTest {
     @Test
     void givenDirectorNull_WhenCreateDivision_ThenBadRequest() {
         //  GIVEN
-        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("Hogwarts","The four wizards school", null);
+        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("Hogwarts", "The four wizards school", null);
         //  WHEN
         RestAssured
                 .given()
@@ -97,7 +97,7 @@ class DivisionControllerTest {
     @Test
     void givenOriginalNameIsEmpty_WhenCreateDivision_ThenBadRequest() {
         //  GIVEN
-        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("Hogwarts","", "Hagrid");
+        CreateDivisionDto expectedCreateDivisionDto = new CreateDivisionDto("Hogwarts", "", "Hagrid");
         //  WHEN
         RestAssured
                 .given()

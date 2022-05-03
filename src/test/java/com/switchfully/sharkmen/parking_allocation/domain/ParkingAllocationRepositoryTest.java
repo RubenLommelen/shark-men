@@ -23,7 +23,7 @@ class ParkingAllocationRepositoryTest {
 
     @Test
     void checkIfParkingAllocationIsInRepo() {
-        List<ParkingAllocation> expectedParkingAllocationList = new ArrayList<>(List.of(new ParkingAllocation(memberRepository.getById(1L),"JA21HJH",parkingLotRepository.getById(1L))));
+        List<ParkingAllocation> expectedParkingAllocationList = new ArrayList<>(List.of(new ParkingAllocation(memberRepository.getById(1L), "JA21HJH", parkingLotRepository.getById(1L))));
 
         List<ParkingAllocation> actualParkingAllocationList = parkingAllocationRepository.findAll();
 

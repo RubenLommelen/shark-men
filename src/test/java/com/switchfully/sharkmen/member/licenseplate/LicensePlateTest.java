@@ -24,7 +24,6 @@ public class LicensePlateTest {
     private int port;
 
 
-
     @Test
     void GivenWrongLicensePlate_WhenCreatingNewMember_ThenThrowBadRequest() {
         //  GIVEN

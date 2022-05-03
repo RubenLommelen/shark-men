@@ -22,7 +22,7 @@ public class DivisionController {
 
     @PostMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(CREATED)
-    public DivisionDto createDivision(@Valid @RequestBody CreateDivisionDto createDivisionDto){
+    public DivisionDto createDivision(@Valid @RequestBody CreateDivisionDto createDivisionDto) {
         return divisionService.createDivision(createDivisionDto);
     }
 }

@@ -45,7 +45,6 @@ public class ParkingAllocation {
     }
 
 
-
     public ParkingLot getParkingLot() {
         return parkingLot;
     }
