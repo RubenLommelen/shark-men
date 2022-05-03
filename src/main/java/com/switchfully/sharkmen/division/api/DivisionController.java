@@ -5,6 +5,8 @@ import com.switchfully.sharkmen.division.api.dto.DivisionDto;
 import com.switchfully.sharkmen.division.service.DivisionService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -20,7 +22,7 @@ public class DivisionController {
 
     @PostMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(CREATED)
-    public DivisionDto createDivision(@RequestBody CreateDivisionDto createDivisionDto){
+    public DivisionDto createDivision(@Valid @RequestBody CreateDivisionDto createDivisionDto){
         return divisionService.createDivision(createDivisionDto);
     }
 }
