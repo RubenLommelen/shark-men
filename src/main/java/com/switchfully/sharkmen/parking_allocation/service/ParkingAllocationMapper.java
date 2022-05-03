@@ -5,12 +5,15 @@ import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocati
 import com.switchfully.sharkmen.parking_allocation.api.dto.CreateParkingAllocationResultDto;
 import com.switchfully.sharkmen.parking_allocation.domain.ParkingAllocation;
 import com.switchfully.sharkmen.parking_lot.service.ParkingLotMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ParkingAllocationMapper {
-    private MemberMapper memberMapper;
-    private ParkingLotMapper parkingLotMapper;
+    private final Logger parkingAllocationServiceLogger = LoggerFactory.getLogger(ParkingAllocationService.class);
+    private final MemberMapper memberMapper;
+    private final ParkingLotMapper parkingLotMapper;
 
     public ParkingAllocationMapper(MemberMapper memberMapper, ParkingLotMapper parkingLotMapper) {
         this.memberMapper = memberMapper;
@@ -18,7 +21,7 @@ public class ParkingAllocationMapper {
     }
 
     public ParkingAllocation toParkingAllocation(CreateParkingAllocationDto createParkingAllocationDto) {
-
+        parkingAllocationServiceLogger.info("CreateParkingAllocationDto conversion to Parking allocation");
         return new ParkingAllocation(
 
                 memberMapper.toMember(createParkingAllocationDto.getMemberId()),
@@ -29,6 +32,7 @@ public class ParkingAllocationMapper {
     }
 
     public CreateParkingAllocationResultDto toDto(ParkingAllocation parkingAllocation) {
+        parkingAllocationServiceLogger.info("ParkingAllocation conversion to CreateParkingAllocationResultDto");
         return new CreateParkingAllocationResultDto(parkingAllocation.getId());
     }
 }
