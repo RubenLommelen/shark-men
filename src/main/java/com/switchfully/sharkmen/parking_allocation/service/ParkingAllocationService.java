@@ -39,24 +39,24 @@ public class ParkingAllocationService {
 
     public CreateParkingAllocationResultDto startAllocation(CreateParkingAllocationDto createParkingAllocationDto) {
         parkingAllocationServiceLogger.info("Started creating parking allocation");
-        assertMemberIdExists(createParkingAllocationDto.getMemberId());
-        assertLicensePlateIsCorrect(createParkingAllocationDto.getLicensePlateNumber(), createParkingAllocationDto.getMemberId());
-        assertParkingLotIdExists(createParkingAllocationDto.getParkingLotId());
+        checkIfMemberIdExists(createParkingAllocationDto.getMemberId());
+        checkIfLicensePlateIsCorrect(createParkingAllocationDto.getLicensePlateNumber(), createParkingAllocationDto.getMemberId());
+        checkIfParkingLotIdExists(createParkingAllocationDto.getParkingLotId());
 
         ParkingAllocation parkingAllocation = parkingAllocationMapper.toParkingAllocation(createParkingAllocationDto);
         parkingAllocationServiceLogger.info("Saving allocation to database");
         parkingAllocationRepository.save(parkingAllocation);
-        parkingAllocationServiceLogger.info("Successfully created parking allocation");
+        parkingAllocationServiceLogger.info("Successfully created parking allocation with id " + parkingAllocation.getId());
         return parkingAllocationMapper.toDto(parkingAllocation);
     }
 
-    private void assertMemberIdExists(Long memberId) {
+    private void checkIfMemberIdExists(Long memberId) {
         if (!memberRepository.existsById(memberId)) {
             throw new NotFoundException("no member found for id " + memberId);
         }
     }
 
-    private void assertLicensePlateIsCorrect(String licensePlateNumber, Long memberId) {
+    private void checkIfLicensePlateIsCorrect(String licensePlateNumber, Long memberId) {
         if (memberRepository.getById(memberId).getMembershipLevel() == MembershipLevel.GOLD) {
             return;
         }
@@ -68,7 +68,7 @@ public class ParkingAllocationService {
         }
     }
 
-    private void assertParkingLotIdExists(Long parkingLotId) {
+    private void checkIfParkingLotIdExists(Long parkingLotId) {
         if (!parkingLotRepository.existsById(parkingLotId)) {
             throw new NotFoundException("no parking lot found for id " + parkingLotId);
         }
